@@ -1,0 +1,398 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Inves &mdash; Colorlib Website Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts1/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts1/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap"  id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+      
+    <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center position-relative">
+          
+            
+            <div class="site-logo">
+                <a href="index.html" class="text-black"><span class="text-primary">Inves</span></a>
+            </div>
+            
+              <nav class="site-navigation text-center ml-auto" role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="#home-section" class="nav-link">Home</a></li>
+                  <li><a href="#about-section" class="nav-link">About</a></li>
+                  <li><a href="#services-section" class="nav-link">Services</a></li>
+                  <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                </ul>
+              </nav>
+          
+            
+
+          <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="owl-carousel slide-one-item">
+      <div class="site-section-cover overlay img-bg-section" style="background-image: url('{% static 'images1/hero_1.jpg' %}'); " >
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-12 col-lg-7 text-center">
+              <h1>Evaluating for Success</h1>
+              <p> In-depth performance evaluation of the business through a screening of the last available financial reports.</p>
+              <p><a href="{% url 'front_page:excel_index' %}" class="btn btn-white-outline border-w-2 btn-md">Upload Excel</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="site-section-cover overlay img-bg-section" style="background-image: url('{% static 'images1/hero_2.jpg' %}'); " >
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-12 col-lg-7 text-center">
+              <h1>Compare with Top Companies</h1>
+              <p>Know where your company stands</p>
+              <p><a href="{% url 'music:index' %}" class="btn btn-white-outline border-w-2 btn-md">Check</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="pb-5" style="position: relative; z-index: 8;">
+      <div class="container">
+        <div class="row" style="margin-top: -50px;">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <img src="{%  static 'images1/img_1.jpg' %}" alt="Image" class="img-fluid mb-3">
+            <h3 class="text-primary h4 mb-2">Business Analytics</h3>
+            <p>Analysis of past business performance to gain insight and drive business planning.</p>
+            <p><a href="#">Read more</a></p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <img src="{%  static 'images1/img_2.jpg' %}" alt="Image" class="img-fluid mb-3">
+            <h3 class="text-primary h4 mb-2">Recommended Solutions</h3>
+            <p>Methodological support for financial analysis and a series of recommendation to improve performance.</p>
+            <p><a href="#">Read more</a></p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+            <img src="{%  static 'images1/img_3.jpg' %}" alt="Image" class="img-fluid mb-3">
+            <h3 class="text-primary h4 mb-2">Automatic Reporting</h3>
+            <p>Generates an automatic financial report with charts, graphs, ratios, and comments.</p>
+            <p><a href="#">Read more</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section" id="about-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6 mb-4">
+            <figure class="block-img-video-1" data-aos="fade">
+              <a href="https://vimeo.com/45830194" class="popup-vimeo">
+                <span class="icon"><span class="icon-play"></span></span>
+                <img src="{%  static 'images1/hero_1.jpg' %}" alt="Image" class="img-fluid">
+              </a>
+            </figure>
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <h2 class="text-primary mb-4">Welcome to Inves</h2>
+            <p>The website offers a comprehensive feature set for collecting, spreading and analyzing financial statement data.</p>
+            <p>The software is able to calculate financial ratios, rating and generate automatic financial analysis reports.</p>
+            <p>These reports can include trend and peer-group analysis to compare counter-parties against similar companies in the same market or industry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section bg-light" id="services-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="block-heading-1">
+              <h2>Our Services</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-signal d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">Business Analytics</h3>
+            <p>Analysis of past business performance to gain insight and drive business planning.</p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-anchor d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">Recommended Solutions</h3>
+            <p>Methodological support for financial analysis and a series of recommendation to improve performance.</p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-magnet d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">Reporting</h3>
+            <p>Generates an automatic financial report with charts, graphs, ratios, and comments.</p>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-briefcase d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">All in One</h3>
+            <p>Complete with tables, graphs and custom comments describing the processing results</p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-money d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">Cheap</h3>
+            <p>Analysis with corrections in addition to comparisons available in a nominal price.</p>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4">
+            <span class="icon-umbrella d-block mb-3 display-3 text-secondary"></span>
+            <h3 class="text-primary h4 mb-2">Compare with others</h3>
+            <p>Compare with top comapnies in every sectors to know your stand in the market.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-section" id="team-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+            <div class="block-heading-1">
+              <h2>Our Leadership</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-up">
+            <div class="block-team-member-1 text-center rounded">
+              <figure>
+                <img src="{% static 'images1/person_1.jpg' %}" alt="Image" class="img-fluid rounded-circle">
+              </figure>
+              <h3 class="font-size-20 text-white">Jean Smith</h3>
+              <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Madhur Kabra</span>
+              <div class="block-social-1">
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+            <div class="block-team-member-1 text-center rounded">
+              <figure>
+                <img src="{% static 'images1/person_3.jpg' %}" alt="Image" class="img-fluid rounded-circle">
+              </figure>
+              <h3 class="font-size-20 text-white">Ricky Fisher</h3>
+              <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Pratik Rathi</span>
+              <div class="block-social-1">
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="block-team-member-1 text-center rounded">
+              <figure>
+                <img src="{%static 'images1/person_2.jpg' %}" alt="Image" class="img-fluid rounded-circle">
+              </figure>
+              <h3 class="font-size-20 text-white">Bob Carry</h3>
+              <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Rahil Sheth</span>
+              <div class="block-social-1">
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+                <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <div class="site-section block-13 overlay bg-image" id="testimonials-section" data-aos="fade" style="background-image: url('{% static 'images1/hero_1.jpg' %}');">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <div class="block-heading-1">
+            <h2 class="text-white">Inves Reviews</h2>
+          </div>
+        </div>
+
+        <div class="owl-carousel nonloop-block-13">
+          <div>
+            <div class="block-testimony-1 text-center">
+              
+              <blockquote class="mb-4">
+                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugit excepturi sapiente voluptatum nulla odio quaerat quibusdam tempore similique doloremque veritatis et cupiditate, maiores cumque repudiandae explicabo tempora deserunt consequuntur?&rdquo;</p>
+              </blockquote>
+
+              <figure>
+                <img src="{% static 'images1/person_4.jpg' %}" alt="Image" class="img-fluid rounded-circle mx-auto">
+              </figure>
+              <h3 class="font-size-20 text-white">Ricky Fisher</h3>
+            </div>
+          </div>
+
+          <div>
+            <div class="block-testimony-1 text-center">
+              <blockquote class="mb-4">
+                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugit excepturi sapiente voluptatum nulla odio quaerat quibusdam tempore similique doloremque veritatis et cupiditate, maiores cumque repudiandae explicabo tempora deserunt consequuntur?&rdquo;</p>
+              </blockquote>
+
+              <figure>
+                <img src="{% static 'images1/person_2.jpg' %}" alt="Image" class="img-fluid rounded-circle mx-auto">
+              </figure>
+              <h3 class="font-size-20 text-white">Ken Davis</h3>
+            </div>
+          </div>
+
+          <div>
+            <div class="block-testimony-1 text-center">
+              <blockquote class="mb-4">
+                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugit excepturi sapiente voluptatum nulla odio quaerat quibusdam tempore similique doloremque veritatis et cupiditate, maiores cumque repudiandae explicabo tempora deserunt consequuntur?&rdquo;</p>
+              </blockquote>
+
+              <figure>
+                <img src="{% static 'images1/person_1.jpg' %}" alt="Image" class="img-fluid rounded-circle mx-auto">
+              </figure>
+              <h3 class="font-size-20 text-white">Mellisa Griffin</h3>
+            </div>
+          </div>
+
+          <div>
+            <div class="block-testimony-1 text-center">
+              <blockquote class="mb-4">
+                <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugit excepturi sapiente voluptatum nulla odio quaerat quibusdam tempore similique doloremque veritatis et cupiditate, maiores cumque repudiandae explicabo tempora deserunt consequuntur?&rdquo;</p>
+              </blockquote>
+
+              <figure>
+                <img src="{% static 'images1/person_3.jpg' %}" alt="Image" class="img-fluid rounded-circle mx-auto">
+              </figure>
+              <h3 class="font-size-20 text-white">Robert Steward</h3>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+   
+
+
+    <div class="site-section bg-light" id="contact-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <div class="block-heading-1">
+              <span>Get In Touch</span>
+              <h2>Contact Us</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <form action="#" method="post">
+              <div class="form-group row">
+                <div class="col-md-6 mb-4 mb-lg-0">
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="First name">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" placeholder="Email address">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-6 ml-auto">
+                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-4 ml-auto">
+            <h2 class="text-black">Need to know more on details? Call Us </h2>
+            <h2 class="text-black"><a href="tel://917506543219">+91 750 6543 219</a></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="site-footer">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+    </footer>
+
+  </div>
+
+  <script src="{% static 'js1/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js1/jquery-ui.js' %}"></script>
+  <script src="{% static 'js1/popper.min.js' %}"></script>
+  <script src="{% static 'js1/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js1/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.sticky.js' %}"></script>
+  <script src="{% static 'js1/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js1/aos.js' %}"></script>
+
+  <script src="{% static 'js1/main.js' %}"></script>
+    
+  </body>
+</html>

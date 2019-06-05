@@ -1,0 +1,10 @@
+<h1>{{ sector.sector_name }}</h1>
+<br>
+<img src=" {{ sector.sector_logo }}">
+<ul>
+    {% for company in sector.company_set.all %}
+    <li>{{ company.company_name }}</li>
+    {% endfor %}
+</ul>
+
+

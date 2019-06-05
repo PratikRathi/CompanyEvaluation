@@ -1,0 +1,10 @@
+{% if all_sectors %}
+    <h3>Company Forecastor</h3>
+    <ul>
+        {% for sector in all_sectors %}
+        <li><a href="/music/{{ sector.id }}"> {{ sector.sector_name }} </a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Site Under Development </h3>
+{% endif %}
