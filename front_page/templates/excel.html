@@ -1,18 +1,130 @@
-<html>
+<html xmlns:front_page="http://www.w3.org/1999/xhtml">
     <head>
         <title>
             Excel file
         </title>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script>
+            console.log(current_ratio);
+            </script>
+            <script>
+                window.onload = function () {
+    
+                var chart1 = new CanvasJS.Chart("chartContainer1", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title:{
+                        text: "current_ratio"
+                    },
+                    axisY:{
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        dataPoints: [
+                            {% for cell in current_ratio %}
+                                { y: {{cell}} },
+                            {% endfor %}
+                        ]
+                    }]
+                });
+                chart1.render();
+    
+    
+                var chart2 = new CanvasJS.Chart("chartContainer2", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title:{
+                        text: "quick_ratio"
+                    },
+                    axisY:{
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        dataPoints: [
+                            {% for cell in quick_ratio %}
+                                { y: {{cell}} },
+                            {% endfor %}
+                        ]
+                    }]
+                });
+                chart2.render();
+    
+    
+    
+                var chart3 = new CanvasJS.Chart("chartContainer3", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title:{
+                        text: "debt_equity"
+                    },
+                    axisY:{
+                        includeZero: false
+                    },
+                    data: [{
+                        type: "line",
+                        dataPoints: [
+                            {% for cell in debt_equity %}
+                                { y: {{cell}} },
+                            {% endfor %}
+                        ]
+                    }]
+                });
+                chart3.render();
+    
+                }
+        </script> 
+        <style>
+            table {
+              width:80%;
+              
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 15px;
+              text-align: left;
+            }
+            tr:nth-child(even) {
+              background-color: #eee;
+            }
+            tr:nth-child(odd) {
+             background-color: #fff;
+            }
+            th {
+              background-color: black;
+              color: white;
+            }
+            </style>      
     </head>
-    <body style="margin-top: 30px;margin-left: 30px;">
+
+
+
+
+
+
+
+    <!-- Body Start -->
+    <body >
+        <br><br>
         <form action="{% url "front_page:excel_index" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            <div align="center">
             <input type="file"
                    title="Upload excel file"
                    name="excel_file"
-                   style="border: 1px solid black; padding: 5px;"
+                   style="border: 1px solid black; padding: 5;float: center;"
                    required="required">
-            <p>
+                </div>
+            <br>
+            <p align="center">
             <input type="submit"
                    value="Upload"
                    style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
@@ -20,12 +132,72 @@
 
         <p></p>
         <hr>
-
-        {% for row in excel_data %}
-            {% for cell in row %}
-                {{ cell }}&nbsp;&nbsp;
-            {% endfor %}
+        <!-- <script>
+        var current_ratio = [];
+        </script>
+        {{current_ratio}}
+        {{quick_ratio}}
+        {{debt_equity}}
+        {% for cell in current_ratio %}
+                {{ cell }}
+                 <script>current_ratio.push({{ cell }});</script>
             <br>
-        {% endfor %}
-    </body>
+        {% endfor %} -->
+
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-5"><div id="chartContainer1" style="height: 300px; width: 100%;"></div></div>
+            <div class="col-sm-5"><div id="chartContainer2" style="height: 300px; width: 100%;"></div></div>
+        </div>
+        {% for value in current_ratio_perc %}
+            <p>The current ratio indicates companys ability to {{value}} </p>
+        
+         {% endfor %}
+
+        <br>
+        <div class="row">
+            <div class="col-sm-10"><div id="chartContainer3" style="height: 300px; width: 100%;"></div></div>
+          </div> 
+        </div>
+
+    <!-- <div align="center">
+    <div id="chartContainer1" float="center" style="height: 300px; width: 60%;"></div><br>
+    <div id="chartContainer2" style="height: 300px; width: 60%;"></div>
+    <div id="chartContainer3" style="height: 300px; width: 60%;"></div>
+</div> -->
+
+
+<br><br><br>
+    <h4 align="center">Table of ratios</h4>
+    <div align="center">
+    <table>
+        <tr>
+            <th>Name of Ratio</th>
+            <th>Mar 19</th>
+            <th>Mar 18</th>
+            <th>Mar 17</th>
+            <th>Mar 16</th>
+            <th>Mar 15</th>
+        </tr>
+        <tr>
+            <th>Current Ratio</th>
+            {% for value in current_ratio %}
+                <td>{{value}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Quick Ratio</th>
+            {% for value in quick_ratio %}
+                <td>{{value}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <th>Debt Equity</th>
+            {% for value in debt_equity %}
+                <td>{{value}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+</body>
 </html>
