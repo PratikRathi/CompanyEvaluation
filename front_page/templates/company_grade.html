@@ -1,0 +1,134 @@
+{% load staticfiles %}
+
+<html lang="en">
+  <head>
+    <title>Inves &mdash; Colorlib Website Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts1/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts1/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+            window.onload = function () {
+
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                    text: "Year-on-Year Rank"
+                },
+                axisY:{
+                    includeZero: false
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: [
+                        {% for cell in y_pred %}
+                            { y: {{cell}} },
+                        {% endfor %}
+                    ]
+                }]
+            });
+            chart1.render();
+            }
+    </script>
+  </head>
+
+<body>
+<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+            
+              
+              <div class="site-logo">
+                  <h2><a href="index.html" class="text-black"><span class="text-primary">Inves</span></a></h2>
+              </div>
+              
+                <nav class="site-navigation text-center ml-auto" role="navigation">
+  
+                  <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                    <li><a href="#home-section" class="nav-link">Home</a></li>
+                    <li><a href="#about-section" class="nav-link">About</a></li>
+                    <li><a href="#services-section" class="nav-link">Services</a></li>
+                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                  </ul>
+                </nav>
+            
+              
+  
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+  
+          </div>
+        </div>
+        
+      </header>
+      <div class="site-section bg-light" id="services-section">
+            <div class="container">
+              <div class="row mb-5">
+                <div class="col-12">
+                  <div class="block-heading-1">
+                    <h1>Company Performance</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <span class="icon-anchor d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">Current Grade of Company</h3>
+                  <h4>The rank of company is <span class="text-primary h4 mb-2">{% for i in y_pred %}{{i}}<br>{% endfor %}</span></h4>
+                </div>
+                <div class="col-md-6 col-lg-8 mb-4">
+                  <span class="icon-signal d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">Growth</h3>
+                  <div id="chartContainer1" style="height: 300px; width: auto;"></div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                  <span class="icon-magnet d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">Reporting</h3>
+                  <p>Generates an automatic financial report with charts, graphs, ratios, and comments.</p>
+                </div>
+      
+                <div class="col-md-6 col-lg-4 mb-4">
+                  <span class="icon-briefcase d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">All in One</h3>
+                  <p>Complete with tables, graphs and custom comments describing the processing results</p>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                  <span class="icon-money d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">Cheap</h3>
+                  <p>Analysis with corrections in addition to comparisons available in a nominal price.</p>
+                </div>
+                <!-- <div class="col-md-6 col-lg-4 mb-4">
+                  <span class="icon-umbrella d-block mb-3 display-3 text-secondary"></span>
+                  <h3 class="text-primary h4 mb-2">Compare with others</h3>
+                  <p>Compare with top comapnies in every sectors to know your stand in the market.</p>
+                </div> -->
+      
+              </div>
+            </div>
+          </div>
+      
+<h3>{{ y_pred }}</h3>
+
+</body>

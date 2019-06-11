@@ -6,6 +6,41 @@ from django.shortcuts import render, render_to_response
 def index(request):
     return render(request, "index.html", {})
 
+def ml_index(request):
+    import pandas as pd  
+    import numpy as np  
+    import pickle
+    import matplotlib.pyplot as plt 
+    # excel_file = request.FILES["excel_file"]
+    df = pd.read_csv(request.FILES['excel_file'])
+    # print(df.iloc[:,1])
+    print(len(df.columns))
+    for i in range(1,len(df.columns)-1):
+        l = list(df.iloc[:,i])
+        l1 = list(df.iloc[:,i+1])
+        for j in range(0,len(l)):
+            if(l1[j] == 0 or l[j] == 0):
+                l[j]=0
+            else:
+                l[j] = ((l[j]-l1[j])/l1[j])*100
+    #     print(l)
+        df.iloc[:,i] = l
+    df
+    print(df)
+    # df = df.transpose()
+    df = df.iloc[:, :-1]
+    df = df.transpose()
+    df = df.drop([1,3],axis=1)
+    df = df.drop('Unnamed: 0')
+    # Exploratory Data Analysis
+    print(df.shape)  
+    print("------------")
+    print(df.head()) 
+    X_test = df
+    loaded_model = pickle.load(open('/home/rahil/Desktop/FInal Project/finalized_model_7class.sav', 'rb'))
+    y_pred=loaded_model.predict(X_test)
+    return render(request, "company_grade.html", {"y_pred":y_pred})
+
 def excel_index(request):
     if "GET" == request.method:
         return render(request, "excel.html", {})

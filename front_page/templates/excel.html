@@ -78,8 +78,37 @@
                 chart3.render();
     
                 }
+                function curr_ratio_func() {
+                    var x = document.getElementById("curr_ratio_div");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                    } 
+                function quick_ratio_func() {
+                    var x = document.getElementById("quick_ratio_div");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                    } 
+
+                function debt_equity_ratio_func() {
+                    var x = document.getElementById("debt_equity_ratio_div");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                    } 
         </script> 
         <style>
+            a:hover {
+            color: rgb(170, 164, 165);
+            cursor: pointer;
+            }
             table {
               width:80%;
               
@@ -114,7 +143,7 @@
     <!-- Body Start -->
     <body >
         <br><br>
-        <form action="{% url "front_page:excel_index" %}" method="post" enctype="multipart/form-data">
+        <!-- <form action="{% url "front_page:excel_index" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div align="center">
             <input type="file"
@@ -128,7 +157,84 @@
             <input type="submit"
                    value="Upload"
                    style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
-        </form>
+        </form> -->
+
+
+
+
+        <div class="row">
+                <div class="col-10" align="center">
+                        <div class="jumbotron" style="width:60%;">
+                            <h4>Enter Balance Sheet</h4>
+                                <form action="{% url "front_page:excel_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                                        <div class="col-md-8">
+                                            <input type="file"
+                                             name="excel_file"
+                                             id="csv_file" 
+                                             required="True" 
+                                             class="form-control"
+                                             style="height: 40px;">
+                                        </div>                    
+                                    </div>
+                                <div class="form-group">                    
+                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                                    </div> 
+                                </div>
+                                </form>
+                            </div>
+                </div>
+            </div>
+
+
+
+
+
+        <!-- <form action="{% url "front_page:ml_index" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div align="center">
+            <input type="file"
+                   title="Upload excel file"
+                   name="excel_file"
+                   style="border: 1px solid black; padding: 5;float: center;"
+                   required="required">
+                </div>
+            <br>
+            <p align="center">
+            <input type="submit"
+                   value="Upload"
+                   style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
+        </form> -->
+        <div class="row">
+            <div class="col-10" align="center">
+                    <div class="jumbotron" style="width:60%;">
+                            <h4>Enter Ratios Sheet</h4>
+                            <form action="{% url "front_page:ml_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                                    <div class="col-md-8">
+                                        <input type="file"
+                                         name="excel_file"
+                                         id="csv_file" 
+                                         required="True" 
+                                         class="form-control"
+                                         style="height: 40px;">
+                                    </div>                    
+                                </div>
+                            <div class="form-group">                    
+                                <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                        <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                                </div> 
+                            </div>
+                            </form>
+                        </div>
+            </div>
+        </div>
+        
 
         <p></p>
         <hr>
@@ -144,19 +250,75 @@
             <br>
         {% endfor %} -->
 
+
+        <h4 align="center">Table of ratios</h4>
+        <div align="center">
+        <table>
+            <tr>
+                <th>Name of Ratio</th>
+                <th>Mar 19</th>
+                <th>Mar 18</th>
+                <th>Mar 17</th>
+                <th>Mar 16</th>
+                <th>Mar 15</th>
+            </tr>
+            <tr>
+                <th>
+                        <a onclick="curr_ratio_func()" style="text-decoration: none;color:white;">Current Ratio</a>
+                </th>
+                {% for value in current_ratio %}
+                    <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th><a onclick="quick_ratio_func()" style="text-decoration: none;color:white;">Quick Ratio</a></th>
+                {% for value in quick_ratio %}
+                    <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th><a onclick="debt_equity_ratio_func()" style="text-decoration: none;color:white;">Debt Equity</a></th>
+                {% for value in debt_equity %}
+                    <td>{{value}}</td>
+                {% endfor %}
+            </tr>
+        </table>
+        <br><br><br>
         <div class="container">
         <div class="row">
-            <div class="col-sm-5"><div id="chartContainer1" style="height: 300px; width: 100%;"></div></div>
-            <div class="col-sm-5"><div id="chartContainer2" style="height: 300px; width: 100%;"></div></div>
-        </div>
-        {% for value in current_ratio_perc %}
-            <p>The current ratio indicates companys ability to {{value}} </p>
+            <div class="col-sm-5" >
         
-         {% endfor %}
+            <div id="curr_ratio_div" style="display:none;">
+                    <div id="chartContainer1" style="height: 300px; width: auto;"></div>
+                    
+                    <h4>This is Current Ratio details element.</h4>
+                  </div> 
+            </div>
 
+            
+            <div class="col-sm-5">
+                    
+                <div id="quick_ratio_div" style="display:none;">
+                        <div id="chartContainer2" style="height: 300px; width: auto;"></div>
+                        <br>
+                        <h4>This is Quick Ratio details element.</h4>
+                        </div> 
+            </div>
+        </div>
+       
+        <br>
+        <br>
+        <br>
         <br>
         <div class="row">
-            <div class="col-sm-10"><div id="chartContainer3" style="height: 300px; width: 100%;"></div></div>
+            <div class="col-sm-10">
+                <!-- <div id="chartContainer3" style="height: 300px; width: 100%;"></div> -->
+                <div id="debt_equity_ratio_div" style="display:none;">
+                        <div id="chartContainer3" style="height: 300px; width: auto;"></div>
+                        <br>
+                        <h4>This is Debt_equity details element.</h4>
+                        </div> 
+            </div>
           </div> 
         </div>
 
@@ -165,39 +327,10 @@
     <div id="chartContainer2" style="height: 300px; width: 60%;"></div>
     <div id="chartContainer3" style="height: 300px; width: 60%;"></div>
 </div> -->
+    
 
 
-<br><br><br>
-    <h4 align="center">Table of ratios</h4>
-    <div align="center">
-    <table>
-        <tr>
-            <th>Name of Ratio</th>
-            <th>Mar 19</th>
-            <th>Mar 18</th>
-            <th>Mar 17</th>
-            <th>Mar 16</th>
-            <th>Mar 15</th>
-        </tr>
-        <tr>
-            <th>Current Ratio</th>
-            {% for value in current_ratio %}
-                <td>{{value}}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <th>Quick Ratio</th>
-            {% for value in quick_ratio %}
-                <td>{{value}}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            <th>Debt Equity</th>
-            {% for value in debt_equity %}
-                <td>{{value}}</td>
-            {% endfor %}
-        </tr>
-    </table>
+    
 </div>
 </body>
 </html>
