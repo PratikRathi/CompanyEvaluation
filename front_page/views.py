@@ -39,7 +39,43 @@ def ml_index(request):
     X_test = df
     loaded_model = pickle.load(open('/home/rahil/Desktop/FInal Project/finalized_model_7class.sav', 'rb'))
     y_pred=loaded_model.predict(X_test)
-    return render(request, "company_grade.html", {"y_pred":y_pred})
+
+    df[0]
+    years = list(df.index)
+    company_performance = list(y_pred)
+    company_performance.reverse()
+    company_performance
+    years.reverse()
+    company_data = {}
+    for i in range(0,len(years)):
+        company_data[years[i]]=int(company_performance[i])
+    years_number = []
+    for i in range(1,len(years)+1):
+        years_number.append(i)
+    print(years_number)
+    from numpy  import array
+    years_number = array(years_number)
+    company_performance = array(company_performance)
+    n = np.size(years_number) 
+    # mean of x and y vector 
+    m_x, m_y = np.mean(years_number), np.mean(company_performance) 
+    # calculating cross-deviation and deviation about x 
+    SS_xy = np.sum(company_performance*years_number) - n*m_y*m_x 
+    SS_xx = np.sum(years_number*years_number) - n*m_x*m_x 
+    # calculating regression coefficients 
+    m = SS_xy / SS_xx 
+    c = m_y - m*m_x 
+    np.mean(company_performance)
+    import math
+    change = math.sin(math.atan(m))
+    value = c * change * np.size(years_number) * -1
+    perc = ((7-value)/7) +  1
+    final_grade = np.mean(company_performance)*perc
+    # company_data['final_grade']=final_grade
+    grade = {"final_grade": final_grade}
+    company_data
+
+    return render(request, "company_grade.html",{"company_data" : company_data},{"grade" : grade} )
 
 def excel_index(request):
     if "GET" == request.method:

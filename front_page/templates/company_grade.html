@@ -32,17 +32,24 @@
             window.onload = function () {
             var chart1 = new CanvasJS.Chart("chartContainer1", {
                 animationEnabled: true,
-                theme: "light2",
-                backgroundColor: "#f8f9fa",
-
-                axisY:{
-                    includeZero: false
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                // subtitles: [{
+                //     text: "In USD",
+                //     fontSize: 16
+                // }],
+                axisY: {
+                    prefix: "Grade",
+                    
                 },
                 data: [{
+                    type: "column",
+                    yValueFormatString: "Grade #,##0.00",
                     dataPoints: [
-                        {% for cell in y_pred %}
-                            { y: {{cell}} },
-                        {% endfor %}
+                    {% for key,value in company_data.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
                     ]
                 }]
             });
@@ -127,37 +134,37 @@
                   <h4 align="center">Grade for each year
                   <br>
                   <br>
-                      {% for i in y_pred %}
-                          {% if i == 0 %}
-                       <img src="{%  static 'images1/A+.ico' %}" alt="Image" class="img-fluid mb-3">
+                      {% for key,value in company_data.items %}
+                          {% if value == 0 %}
+                       {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/A+.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 1 %}
-                       <img src="{%  static 'images1/favicon.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 1 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/favicon.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 2 %}
-                       <img src="{%  static 'images1/B+.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 2 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/B+.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 3 %}
-                       <img src="{%  static 'images1/B.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 3 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/B.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 4 %}
-                       <img src="{%  static 'images1/C+.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 4 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/C+.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 5 %}
-                       <img src="{%  static 'images1/C.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 5 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/C.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 6 %}
-                       <img src="{%  static 'images1/D+.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 6 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/D+.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
-                          {% if i == 7 %}
-                       <img src="{%  static 'images1/D.ico' %}" alt="Image" class="img-fluid mb-3">
+                          {% if value == 7 %}
+                          {{ key }}&nbsp;&nbsp;&nbsp;&nbsp;<img src="{%  static 'images1/D.ico' %}" alt="Image" class="img-fluid mb-3">
                               <br>
                           {% endif %}
                       {% endfor %}
