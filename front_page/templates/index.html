@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Inves &mdash; Colorlib Website Template</title>
+    <title>Inves &mdash; Performance Evaluator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -23,6 +23,40 @@
     <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
 
     <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+
+    <script>
+         function on_Click() {
+                    var x = document.getElementById("excel_upload");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+                    }
+
+        function on_Close() {
+                    var x = document.getElementById("excel_upload");
+                    if (x.style.display === "block") {
+                        x.style.display = "none";
+                    }
+                    }
+    </script>
+    <style>
+    .form-popup {
+      display: none;
+      position: fixed;
+      top: 150px;
+      right: 400px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+    .form-container {
+      max-width: 600px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Add styles to the form container */
+
+    </style>
     
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -75,12 +109,15 @@
             <div class="col-md-12 col-lg-7 text-center">
               <h1>Evaluating for Success</h1>
               <p> In-depth performance evaluation of the business through a screening of the last available financial reports.</p>
-              <p><a href="{% url 'front_page:excel_index' %}" class="btn btn-white-outline border-w-2 btn-md">Upload Excel</a></p>
+
+                <button onclick="on_Click()" class="btn btn-white-outline border-w-2 btn-md">Upload Excel</button>
             </div>
+
           </div>
         </div>
 
       </div>
+
 
       <div class="site-section-cover overlay img-bg-section" style="background-image: url('{% static 'images1/hero_2.jpg' %}'); " >
         <div class="container">
@@ -95,6 +132,38 @@
       </div>
     </div>
 
+     <div id="excel_upload" class="form-popup" style="display: none;">
+
+                <div class="col-10" align="center">
+                        <div class="jumbotron" style="width:60%;">
+                            <h4>Enter Balance Sheet</h4>
+                                <form action="{% url "front_page:excel_index" %}" method="POST" enctype="multipart/form-data" class="form-container">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                                        <div class="col-md-8">
+                                            <input type="file"
+                                             name="excel_file"
+                                             id="csv_file"
+                                             required="True"
+                                             class="form-control"
+                                             style="height: 40px;">
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                            <button type="button" onclick="on_Close()">Close</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                </div>
+
+
+       </div>
 
     <div class="pb-5" style="position: relative; z-index: 8;">
       <div class="container">
@@ -205,7 +274,7 @@
               <figure>
                 <img src="{% static 'images1/person_1.jpg' %}" alt="Image" class="img-fluid rounded-circle">
               </figure>
-              <h3 class="font-size-20 text-white">Jean Smith</h3>
+              <h3 class="font-size-20 text-white">Madhur Kabra</h3>
               <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Madhur Kabra</span>
               <div class="block-social-1">
                 <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
@@ -220,7 +289,7 @@
               <figure>
                 <img src="{% static 'images1/person_3.jpg' %}" alt="Image" class="img-fluid rounded-circle">
               </figure>
-              <h3 class="font-size-20 text-white">Ricky Fisher</h3>
+              <h3 class="font-size-20 text-white">Pratik Rathi</h3>
               <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Pratik Rathi</span>
               <div class="block-social-1">
                 <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
@@ -235,7 +304,7 @@
               <figure>
                 <img src="{%static 'images1/person_2.jpg' %}" alt="Image" class="img-fluid rounded-circle">
               </figure>
-              <h3 class="font-size-20 text-white">Bob Carry</h3>
+              <h3 class="font-size-20 text-white">Rahil Sheth</h3>
               <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Rahil Sheth</span>
               <div class="block-social-1">
                 <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
