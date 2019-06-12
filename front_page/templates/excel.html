@@ -1,5 +1,26 @@
+{% load staticfiles %}
 <html xmlns:front_page="http://www.w3.org/1999/xhtml">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'fonts1/icomoon/style.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl.theme.default.min.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/bootstrap-datepicker.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'fonts1/flaticon/font/flaticon.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+        
         <title>
             Excel file
         </title>
@@ -8,101 +29,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script>
             console.log(current_ratio);
             </script>
-            <script>
-                window.onload = function () {
-
-                var chart1 = new CanvasJS.Chart("chartContainer1", {
-                    animationEnabled: true,
-                    theme: "light2",
-                    title:{
-                        text: "current_ratio"
-                    },
-                    axisY:{
-                        includeZero: false
-                    },
-                    data: [{
-                        type: "line",
-                        dataPoints: [
-                            {% for cell in current_ratio %}
-                                { y: {{cell}} },
-                            {% endfor %}
-                        ]
-                    }]
-                });
-                chart1.render();
-
-
-                var chart2 = new CanvasJS.Chart("chartContainer2", {
-                    animationEnabled: true,
-                    theme: "light2",
-                    title:{
-                        text: "quick_ratio"
-                    },
-                    axisY:{
-                        includeZero: false
-                    },
-                    data: [{
-                        type: "line",
-                        dataPoints: [
-                            {% for cell in quick_ratio %}
-                                { y: {{cell}} },
-                            {% endfor %}
-                        ]
-                    }]
-                });
-                chart2.render();
-
-
-
-                var chart3 = new CanvasJS.Chart("chartContainer3", {
-                    animationEnabled: true,
-                    theme: "light2",
-                    title:{
-                        text: "debt_equity"
-                    },
-                    axisY:{
-                        includeZero: false
-                    },
-                    data: [{
-                        type: "line",
-                        dataPoints: [
-                            {% for cell in debt_equity %}
-                                { y: {{cell}} },
-                            {% endfor %}
-                        ]
-                    }]
-                });
-                chart3.render();
-
-                }
-                function curr_ratio_func() {
-                    var x = document.getElementById("curr_ratio_div");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
-                    }
-                    }
-                function quick_ratio_func() {
-                    var x = document.getElementById("quick_ratio_div");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
-                    }
-                    }
-                function debt_equity_ratio_func() {
-                    var x = document.getElementById("debt_equity_ratio_div");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
-                    } else {
-                        x.style.display = "none";
-                    }
-                    }
-        </script>
+           
         <style>
             a:hover {
             color: rgb(170, 164, 165);
@@ -130,6 +61,26 @@
               background-color: black;
               color: white;
             }
+
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 12px 16px;
+                z-index: 1;
+                }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+                }
             </style>
     </head>
 
@@ -140,91 +91,70 @@
 
 
     <!-- Body Start -->
-    <body >
-        <br><br>
-        <div class="row">
-            <div class="col-10" align="center">
-                    <div class="jumbotron" style="width:60%;">
-                            <h4>Enter Ratios Sheet</h4>
-                            <form action="{% url "front_page:ml_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
-                                    <div class="col-md-8">
-                                        <input type="file"
-                                         name="excel_file"
-                                         id="csv_file"
-                                         required="True"
-                                         class="form-control"
-                                         style="height: 40px;">
+    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+            <div class="site-wrap"  id="home-section">
+          
+              <div class="site-mobile-menu site-navbar-target">
+                <div class="site-mobile-menu-header">
+                  <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                  </div>
+                </div>
+                <div class="site-mobile-menu-body"></div>
+              </div>
+             
+                
+              <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+          
+                <div class="container">
+                  <div class="row align-items-center position-relative">
+                    
+                      
+                      <div class="site-logo">
+                          <a href="index.html" class="text-black"><span class="text-primary">Inves</span></a>
+                      </div>
+                      
+                        <nav class="site-navigation text-center ml-auto" role="navigation">
+          
+                          <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                            <li><a onclick="openCity('overall')" class="nav-link">Cummulative Report</a></li>
+                            <li><div class="dropdown">
+                                    <a class="nav-link">Ratios</a>
+                                    <div class="dropdown-content">
+                                        <a onclick="openCity('London')" style="padding:4px;">Current Ratio</a><hr style="padding:0px;margin:0px;">    
+                                        <a onclick="openCity('Paris')"  style="padding:4px;">Quick Ratio</a><hr style="padding:0px;margin:0px;">  
+                                        <a onclick="openCity('Tokyo')" style="padding:4px;">Debt Equity</a>
                                     </div>
                                 </div>
-                            <div class="form-group">
-                                <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-                                        <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                                </div>
-                            </div>
-                            </form>
-                        </div>
+                            </li>
+                            <li><a onclick="openCity('upload_ratios_sheet')" class="nav-link">Upload Ratios</a></li>
+                            <li><a href="#services-section" class="nav-link">Services</a></li>
+                            <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                            
+                          </ul>
+                        </nav>
+                    
+                      
+          
+                    <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+          
+                  </div>
+
+                      
+                      
+                </div>
+                
+              </header>
+        <br><br>
+
+        <div id="London" class="w3-container city" style="display:none">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                        <a onclick="load_current()" id="loadchartcurrent" style="display:block;">Load Chart</a>
+                <div id="chartContainer1" style=" width: 100%;"></div>
             </div>
-        </div>
-
-
-        <p></p>
-        <hr>
-        <!-- <script>
-        var current_ratio = [];
-        </script>
-        {{current_ratio}}
-        {{quick_ratio}}
-        {{debt_equity}}
-        {% for cell in current_ratio %}
-                {{ cell }}
-                 <script>current_ratio.push({{ cell }});</script>
-            <br>
-        {% endfor %} -->
-
-
-        <h4 align="center">Table of ratios</h4>
-        <div align="center">
-        <table>
-            <tr>
-                <th>Name of Ratio</th>
-                <th>Mar 19</th>
-                <th>Mar 18</th>
-                <th>Mar 17</th>
-                <th>Mar 16</th>
-                <th>Mar 15</th>
-            </tr>
-            <tr>
-                <th>
-                        <a onclick="curr_ratio_func()" style="text-decoration: none;color:white;">Current Ratio</a>
-                </th>
-                {% for value in current_ratio %}
-                    <td>{{value}}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th><a onclick="quick_ratio_func()" style="text-decoration: none;color:white;">Quick Ratio</a></th>
-                {% for value in quick_ratio %}
-                    <td>{{value}}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th><a onclick="debt_equity_ratio_func()" style="text-decoration: none;color:white;">Debt Equity</a></th>
-                {% for value in debt_equity %}
-                    <td>{{value}}</td>
-                {% endfor %}
-            </tr>
-        </table>
-        <br><br><br>
-        <div class="container">
-        <div class="row">
-            <div class="col-sm-5" >
-
-            <div id="curr_ratio_div" style="display:none;">
-                    <div id="chartContainer1" style="height: 300px; width: auto;"></div>
-
+            <div class="col-lg-6 col-sm-12">
                     <h4>This is Current Ratio details element.</h4>
                     <table>
                             <tr>
@@ -251,43 +181,412 @@
                 
                         <br>
                         <br>
-                  </div>
+                    </div>
+                    </div>
+              </div>
+              
+              <div id="Paris" class="w3-container city" style="display:none">
+                    <div class="row">
+                            <div class="col-lg-6 col-sm-12">
+                                    <a onclick="load_quick()" id="loadchartquick" style="display:block;">Load Chart</a>
+                    <div id="chartContainer2" style="width: auto;"></div>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                    <h4>This is Quick Ratio details element.</h4>
+                    <table>
+                            <tr>
+                                <th>Range</th>
+                                <th>Growth Significance</th>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio > 100 </td>
+                                <td>Good Position</td>
+                            </tr>
+                            <tr>
+                                <td> 60 < Quick ratio < 100 </td>
+                                <td>Average Position</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio < 60 </td>
+                                <td>Critical Position</td>
+                            </tr>
+                        </table>
+                    
+                    <br>
+                    <br>
+                    <h4>
+                        Quick ratio measures the company's solvency with regard to short term liabilities. Specifically, it measures whether the company's 
+                        cash and trades are sufficient. 
+                    </h4>
+                    <h4>The value in March 2019 was {{ quick_ratio_perc|first }} which indicates the company was financially unstable. 
+                        The company's financial health was comparatively better in the year March 2015. 
+            
+                    </h4>
             </div>
+            </div>
+                    
+                    <br>
+                    <br>
+              </div>
+              
+              <div id="Tokyo" class="w3-container city" style="display:none">
+                    <div class="row"><div class="col-lg-6 col-sm-12">
+                            <a onclick="load_debt()" id="loadchartdebt" style="display:block;">Load Chart</a>
+                    <div id="chartContainer3" style="width: auto;"></div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                    <h4>This is Debt_equity details element.</h4>
+                    <table>
+                            <tr>
+                                <th>Range</th>
+                                <th>Growth Significance</th>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio > 100 </td>
+                                <td>Good Position</td>
+                            </tr>
+                            <tr>
+                                <td> 60 < Quick ratio < 100 </td>
+                                <td>Average Position</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio < 60 </td>
+                                <td>Critical Position</td>
+                            </tr>
+                        </table>
+                    <h4>
+                        Debt to Equity ratio compares the financial resources provided by debtholders with those provided by the 
+                        shareholders. This ratio basically indicates company's financial risk.
+                    </h4>
+                    </div>
+                    </div>
+              </div>
 
-
-            <div class="col-sm-5">
-
-                <div id="quick_ratio_div" style="display:none;">
-                        <div id="chartContainer2" style="height: 300px; width: auto;"></div>
+              <div id="overall" class="w3-container city" >
+                    <h4 align="center">Table of ratios</h4>
+                    <div align="center">
+                    <table>
+                        <tr>
+                            <th>Name of Ratio</th>
+                            <th>Mar 19</th>
+                            <th>Mar 18</th>
+                            <th>Mar 17</th>
+                            <th>Mar 16</th>
+                            <th>Mar 15</th>
+                        </tr>
+                        <tr>
+                            <th>
+                                    <a onclick="curr_ratio_func()" style="text-decoration: none;color:white;">Current Ratio</a>
+                            </th>
+                            {% for value in current_ratio %}
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <th><a onclick="quick_ratio_func()" style="text-decoration: none;color:white;">Quick Ratio</a></th>
+                            {% for value in quick_ratio %}
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            <th><a onclick="debt_equity_ratio_func()" style="text-decoration: none;color:white;">Debt Equity</a></th>
+                            {% for value in debt_equity %}
+                                <td>{{value}}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+              </div>
+              <br>
+              <hr>
+              <br>
+              <br>
+              <div class="row">
+                    <div class="col-lg-6 col-sm-12">
+                    <div id="chartContainer4" style=" width: auto;"></div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                        <h4>This is Current Ratio details element.</h4>
+                        <table>
+                                <tr>
+                                    <th>Range</th>
+                                    <th>Growth Significance</th>
+                                </tr>
+                                <tr>
+                                    <td>Current Ratio > 2 </td>
+                                    <td>Good Position</td>
+                                </tr>
+                                <tr>
+                                    <td> 1 < Current ratio < 2 </td>
+                                    <td>Average Position</td>
+                                </tr>
+                                <tr>
+                                    <td>Current Ratio < 1 </td>
+                                    <td>Critical Position</td>
+                                </tr>
+                            </table>
+                    
+                            
+                            <h4>The current ratio indicates the company's ability to cover it's short term liabilities using short term assets </h4>
+                            <h4>The value in March 2019 was {{ current_ratio|first }} with almost same value as compared to the previous year.</h4>
+                    
+                            <br>
+                            <br>
+                        </div>
+                        </div>
                         <br>
+                        <hr>
+                        <br>
+
+                        <div class="row">
+                                <div class="col-lg-6 col-sm-12">
+                        <div id="chartContainer5" style="width: auto;"></div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
                         <h4>This is Quick Ratio details element.</h4>
-                        </div>
-            </div>
-        </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-sm-10">
-                <!-- <div id="chartContainer3" style="height: 300px; width: 100%;"></div> -->
-                <div id="debt_equity_ratio_div" style="display:none;">
-                        <div id="chartContainer3" style="height: 300px; width: auto;"></div>
+                        <table>
+                                <tr>
+                                    <th>Range</th>
+                                    <th>Growth Significance</th>
+                                </tr>
+                                <tr>
+                                    <td>Quick Ratio > 100 </td>
+                                    <td>Good Position</td>
+                                </tr>
+                                <tr>
+                                    <td> 60 < Quick ratio < 100 </td>
+                                    <td>Average Position</td>
+                                </tr>
+                                <tr>
+                                    <td>Quick Ratio < 60 </td>
+                                    <td>Critical Position</td>
+                                </tr>
+                            </table>
+                        
                         <br>
-                        <h4>This is Debt_equity details element.</h4>
-                        </div>
-            </div>
-          </div>
-        </div>
+                        <br>
+                        <h4>
+                            Quick ratio measures the company's solvency with regard to short term liabilities. Specifically, it measures whether the company's 
+                            cash and trades are sufficient. 
+                        </h4>
+                        <h4>The value in March 2019 was {{ quick_ratio_perc|first }} which indicates the company was financially unstable. 
+                            The company's financial health was comparatively better in the year March 2015. 
+                
+                        </h4>
+                </div>
+                </div>
+                    
+                <br>
+                <hr>
+                <br>
 
-    <!-- <div align="center">
-    <div id="chartContainer1" float="center" style="height: 300px; width: 60%;"></div><br>
-    <div id="chartContainer2" style="height: 300px; width: 60%;"></div>
-    <div id="chartContainer3" style="height: 300px; width: 60%;"></div>
-</div> -->
+              <div class="row"><div class="col-lg-6 col-sm-12">
+                  
+                    <div id="chartContainer6" style="width: auto;"></div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                    <h4>This is Debt_equity details element.</h4>
+                    <table>
+                            <tr>
+                                <th>Range</th>
+                                <th>Growth Significance</th>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio > 100 </td>
+                                <td>Good Position</td>
+                            </tr>
+                            <tr>
+                                <td> 60 < Quick ratio < 100 </td>
+                                <td>Average Position</td>
+                            </tr>
+                            <tr>
+                                <td>Quick Ratio < 60 </td>
+                                <td>Critical Position</td>
+                            </tr>
+                        </table>
+                    <h4>
+                        Debt to Equity ratio compares the financial resources provided by debtholders with those provided by the 
+                        shareholders. This ratio basically indicates company's financial risk.
+                    </h4>
+                    </div>
+                    </div>
+              </div>
+            <div id="upload_ratios_sheet" class="w3-container city" style="display:none">
+                    <!-- <div class="row"> -->
+                            <!-- <div class="col-10" align="center"> -->
+                                    <div class="jumbotron" style="width:60%;">
+                                            <h4>Enter Ratios Sheet</h4>
+                            <form action="{% url "front_page:ml_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                                    <div class="col-md-8">
+                                        <input type="file"
+                                         name="excel_file"
+                                         id="csv_file"
+                                         required="True"
+                                         class="form-control"
+                                         style="height: 40px;">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                                        <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                                </div>
+                            </div>
+                        </form>
+                                        </div>
+                            <!-- </disv> -->
+                        <!-- </div> -->
+                </div>
+              
+              <script>
+              function openCity(cityName) {
+                var i;
+                var x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none";  
+                }
+                document.getElementById(cityName).style.display = "block";  
+              }
+              </script>
 
 
+        
+<script>
+        setTimeout(function () {
+
+        
+        var chart4 = new CanvasJS.Chart("chartContainer4", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "current_ratio"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in current_ratio %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart4.render();
+
+        
+        var chart5 = new CanvasJS.Chart("chartContainer5", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "quick_ratio"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in quick_ratio %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart5.render();
+
+
+
+        var chart6 = new CanvasJS.Chart("chartContainer6", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "debt_equity"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in debt_equity %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart6.render();},1000);
+
+        function load_debt(){
+            document.getElementById("loadchartdebt").style.display="none";
+        var chart3 = new CanvasJS.Chart("chartContainer3", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "debt_equity"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in debt_equity %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart3.render();}
+
+        function load_quick(){
+            document.getElementById("loadchartquick").style.display="none";
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "quick_ratio"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in quick_ratio %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart2.render();}
+
+        function load_current(){
+            document.getElementById("loadchartcurrent").style.display="none";
+        var chart1 = new CanvasJS.Chart("chartContainer1", {
+            animationEnabled: true,
+            theme: "light2",
+            title:{
+                text: "current_ratio"
+            },
+            axisY:{
+                includeZero: false
+            },
+            data: [{
+                type: "line",
+                dataPoints: [
+                    {% for cell in current_ratio %}
+                        { y: {{cell}} },
+                    {% endfor %}
+                ]
+            }]
+        });
+        chart1.render();}
+        
+        
+</script>
 
 
 </div>

@@ -38,20 +38,29 @@
                         x.style.display = "none";
                     }
                     }
+
+
+
+
+
+
     </script>
     <style>
     .form-popup {
       display: none;
       position: fixed;
-      top: 150px;
-      right: 400px;
-      border: 3px solid #f1f1f1;
+      top: 50%;
+      left:50%;
+      margin-left: -150px;
+      margin-top: -100px;
+      /* right: 400px; */
+      /* border: 3px solid #f1f1f1; */
       z-index: 9;
     }
     .form-container {
-      max-width: 600px;
+      /* max-width: 600px; */
       padding: 10px;
-      background-color: white;
+      background-color: rgba(245, 244, 244, 0.658);
     }
 
     /* Add styles to the form container */
@@ -134,33 +143,28 @@
 
      <div id="excel_upload" class="form-popup" style="display: none;">
 
-                <div class="col-10" align="center">
-                        <div class="jumbotron" style="width:60%;">
-                            <h4>Enter Balance Sheet</h4>
-                                <form action="{% url "front_page:excel_index" %}" method="POST" enctype="multipart/form-data" class="form-container">
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
-                                        <div class="col-md-8">
-                                            <input type="file"
-                                             name="excel_file"
-                                             id="csv_file"
-                                             required="True"
-                                             class="form-control"
-                                             style="height: 40px;">
-                                        </div>
-                                    </div>
-                                <div class="form-group">
-                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-                                            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-                                            <button type="button" onclick="on_Close()">Close</button>
-                                    </div>
-                                </div>
-                                </form>
+        <div style="width:100%;" align="center">
+            <div class="jumbotron" style="width:100%;height:100%;padding:0px;margin:0px;border:0px;">
+                <h4 style="color:rgb(105, 104, 104); ">Enter Balance Sheet</h4>
+                    <form action="/front_page/excel_index/" method="POST" enctype="multipart/form-data" class="form-container">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="qm7vkpYW3YwYH6SnQWQXUjiHqpMA6OUNYHZr6xUB4mcoBtZFXWrIw6t4voMsomKI">
+                        <div class="form-group" style="opacity: 0.8; ">
+                            <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label" style="color:black;">File: </label>
+                            <div>
+                                <input type="file" name="excel_file" id="csv_file" required="True" class="form-control" style="width: 100%;">
                             </div>
+                        </div>
+                    <div class="form-group" >
+                        <div style="margin-bottom:10px;" class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
+                                <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" align="center" style="width:10%;"></span>Upload </button>
+                        </div>
+                        <div style="margin-bottom:10px;" class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
+                                <button type="button" onclick="on_Close()" style="margin-right:5px;">Close</button>
+                        </div>
+                    </div>
+                    </form>
                 </div>
+    </div>
 
 
        </div>

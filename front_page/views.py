@@ -73,9 +73,9 @@ def ml_index(request):
     final_grade = np.mean(company_performance)*perc
     # company_data['final_grade']=final_grade
     grade = {"final_grade": final_grade}
-    company_data
-
-    return render(request, "company_grade.html",{"company_data" : company_data},{"grade" : grade} )
+    # company_data
+    # print("Grade : ",grade)
+    return render(request, "company_grade.html",{"company_data" : company_data, "grade" : grade} )
 
 def excel_index(request):
     if "GET" == request.method:
