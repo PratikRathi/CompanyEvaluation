@@ -170,7 +170,7 @@ def excel_index(request):
 
 
         # made a dictionary and added key name with a list value
-        ratio_data = {"current_ratio": [], "quick_ratio": [], "debt_equity": [],"current_ratio_perc" : []}
+        ratio_data = {"current_ratio": [], "quick_ratio": [], "debt_equity": [],"current_ratio_perc" : [],"quick_ratio_perc": [],"debt_equity_perc":[]}
         i=1
         name = 0
 
@@ -188,8 +188,22 @@ def excel_index(request):
                    ratio_data['quick_ratio'].append(cell)
                elif (name==3):
                    ratio_data['debt_equity'].append(cell)
+        # for row in current_ratio_perc:
+        #     ratio_data['current_ratio_perc'].append(row)
+        name = 0
         for row in current_ratio_perc:
-            ratio_data['current_ratio_perc'].append(row)
+            i=0
+            name=name+1
+            for cell in row:
+               if(i==0):
+                   i=i+1
+               elif(name==1):
+                   ratio_data['current_ratio_perc'].append(cell)
+               elif(name==2):
+                   ratio_data['quick_ratio_perc'].append(cell)
+               elif (name==3):
+                   ratio_data['debt_equity_perc'].append(cell)
+            # ratio_data['current_ratio_perc'].append(row)
 
         # passing a dictionary to the template
         return render(request, 'excel.html', ratio_data)
