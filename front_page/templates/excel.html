@@ -13,7 +13,7 @@
             </script>
             <script>
                 window.onload = function () {
-    
+
                 var chart1 = new CanvasJS.Chart("chartContainer1", {
                     animationEnabled: true,
                     theme: "light2",
@@ -33,8 +33,8 @@
                     }]
                 });
                 chart1.render();
-    
-    
+
+
                 var chart2 = new CanvasJS.Chart("chartContainer2", {
                     animationEnabled: true,
                     theme: "light2",
@@ -54,9 +54,9 @@
                     }]
                 });
                 chart2.render();
-    
-    
-    
+
+
+
                 var chart3 = new CanvasJS.Chart("chartContainer3", {
                     animationEnabled: true,
                     theme: "light2",
@@ -76,7 +76,7 @@
                     }]
                 });
                 chart3.render();
-    
+
                 }
                 function curr_ratio_func() {
                     var x = document.getElementById("curr_ratio_div");
@@ -85,7 +85,7 @@
                     } else {
                         x.style.display = "none";
                     }
-                    } 
+                    }
                 function quick_ratio_func() {
                     var x = document.getElementById("quick_ratio_div");
                     if (x.style.display === "none") {
@@ -93,8 +93,7 @@
                     } else {
                         x.style.display = "none";
                     }
-                    } 
-
+                    }
                 function debt_equity_ratio_func() {
                     var x = document.getElementById("debt_equity_ratio_div");
                     if (x.style.display === "none") {
@@ -102,8 +101,8 @@
                     } else {
                         x.style.display = "none";
                     }
-                    } 
-        </script> 
+                    }
+        </script>
         <style>
             a:hover {
             color: rgb(170, 164, 165);
@@ -111,7 +110,7 @@
             }
             table {
               width:80%;
-              
+
             }
             table, th, td {
               border: 1px solid black;
@@ -131,7 +130,7 @@
               background-color: black;
               color: white;
             }
-            </style>      
+            </style>
     </head>
 
 
@@ -143,98 +142,33 @@
     <!-- Body Start -->
     <body >
         <br><br>
-        <!-- <form action="{% url "front_page:excel_index" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div align="center">
-            <input type="file"
-                   title="Upload excel file"
-                   name="excel_file"
-                   style="border: 1px solid black; padding: 5;float: center;"
-                   required="required">
-                </div>
-            <br>
-            <p align="center">
-            <input type="submit"
-                   value="Upload"
-                   style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
-        </form> -->
-
-
-
-
-        <div class="row">
-                <div class="col-10" align="center">
-                        <div class="jumbotron" style="width:60%;">
-                            <h4>Enter Balance Sheet</h4>
-                                <form action="{% url "front_page:excel_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
-                                        <div class="col-md-8">
-                                            <input type="file"
-                                             name="excel_file"
-                                             id="csv_file" 
-                                             required="True" 
-                                             class="form-control"
-                                             style="height: 40px;">
-                                        </div>                    
-                                    </div>
-                                <div class="form-group">                    
-                                    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-                                            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                                    </div> 
-                                </div>
-                                </form>
-                            </div>
-                </div>
-            </div>
-
-
-
-
-
-        <!-- <form action="{% url "front_page:ml_index" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div align="center">
-            <input type="file"
-                   title="Upload excel file"
-                   name="excel_file"
-                   style="border: 1px solid black; padding: 5;float: center;"
-                   required="required">
-                </div>
-            <br>
-            <p align="center">
-            <input type="submit"
-                   value="Upload"
-                   style="border: 1px solid green; padding:5px; border-radius: 2px; cursor: pointer;">
-        </form> -->
         <div class="row">
             <div class="col-10" align="center">
                     <div class="jumbotron" style="width:60%;">
                             <h4>Enter Ratios Sheet</h4>
-                            <form action="{% url "front_page:ml_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                            <form action="{% url "front_page:ml_index" %}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
                                     <div class="col-md-8">
                                         <input type="file"
                                          name="excel_file"
-                                         id="csv_file" 
-                                         required="True" 
+                                         id="csv_file"
+                                         required="True"
                                          class="form-control"
                                          style="height: 40px;">
-                                    </div>                    
+                                    </div>
                                 </div>
-                            <div class="form-group">                    
+                            <div class="form-group">
                                 <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
                                         <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                                </div> 
+                                </div>
                             </div>
                             </form>
                         </div>
             </div>
         </div>
-        
+
 
         <p></p>
         <hr>
@@ -287,25 +221,25 @@
         <div class="container">
         <div class="row">
             <div class="col-sm-5" >
-        
+
             <div id="curr_ratio_div" style="display:none;">
                     <div id="chartContainer1" style="height: 300px; width: auto;"></div>
-                    
+
                     <h4>This is Current Ratio details element.</h4>
-                  </div> 
+                  </div>
             </div>
 
-            
+
             <div class="col-sm-5">
-                    
+
                 <div id="quick_ratio_div" style="display:none;">
                         <div id="chartContainer2" style="height: 300px; width: auto;"></div>
                         <br>
                         <h4>This is Quick Ratio details element.</h4>
-                        </div> 
+                        </div>
             </div>
         </div>
-       
+
         <br>
         <br>
         <br>
@@ -317,9 +251,9 @@
                         <div id="chartContainer3" style="height: 300px; width: auto;"></div>
                         <br>
                         <h4>This is Debt_equity details element.</h4>
-                        </div> 
+                        </div>
             </div>
-          </div> 
+          </div>
         </div>
 
     <!-- <div align="center">
@@ -327,10 +261,10 @@
     <div id="chartContainer2" style="height: 300px; width: 60%;"></div>
     <div id="chartContainer3" style="height: 300px; width: 60%;"></div>
 </div> -->
-    
 
 
-    
+
+
 </div>
 </body>
 </html>
