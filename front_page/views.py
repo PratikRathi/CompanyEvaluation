@@ -98,16 +98,18 @@ def excel_index(request):
         investments = []
         current_assets = []
         receivables = []
-
+        years = []
+        # print(df)
         max_column = df.max_column
         for i in range(1, max_column + 1):
-            shareholders.append(df.cell(row=6, column=i))
-            Total_Assets.append(df.cell(row=35, column=i))
+            shareholders.append(df.cell(row=7, column=i))
+            Total_Assets.append(df.cell(row=36, column=i))
+            years.append(df.cell(row=1, column=i).value)
             Total_Liabilities.append(df.cell(15, i))
-            cash.append(df.cell(32, i))
-            investments.append(df.cell(29, i))
-            current_assets.append(df.cell(34, i))
-            receivables.append(df.cell(31, i))
+            cash.append(df.cell(33, i))
+            investments.append(df.cell(30, i))
+            current_assets.append(df.cell(35, i))
+            receivables.append(df.cell(32, i))
 
         shareholders = list(shareholders)
         Total_Assets = list(Total_Assets)
@@ -116,7 +118,7 @@ def excel_index(request):
         # investments = list(df.iloc[28])
         # current_assets = list(df.iloc[33])
         # receivables = list(df.iloc[30])
-
+        years.pop(0)
         cash.pop(0)
         investments.pop(0)
         current_assets.pop(0)
@@ -124,10 +126,11 @@ def excel_index(request):
         Total_Assets.pop(0)
         Total_Liabilities.pop(0)
         shareholders.pop(0)
-
+        # year = []
         x_quick = cash + investments + current_assets + receivables
         print(x_quick)
         for i in range(0, len(Total_Liabilities)):
+            # year.append(years[i].value)
             current_ratio.append(float(Total_Assets[i].value) / float(Total_Liabilities[i].value))
             x_quick[i] = float(cash[i].value) + float(investments[i].value) + float(current_assets[i].value) + float(
                 receivables[i].value)
@@ -170,7 +173,7 @@ def excel_index(request):
 
 
         # made a dictionary and added key name with a list value
-        ratio_data = {"current_ratio": [], "quick_ratio": [], "debt_equity": [],"current_ratio_perc" : [],"quick_ratio_perc": [],"debt_equity_perc":[]}
+        ratio_data = {"current_ratio": [], "quick_ratio": [], "debt_equity": [],"current_ratio_perc" : [],"quick_ratio_perc": [],"debt_equity_perc":[],"years":[]}
         i=1
         name = 0
 
@@ -204,7 +207,8 @@ def excel_index(request):
                elif (name==3):
                    ratio_data['debt_equity_perc'].append(cell)
             # ratio_data['current_ratio_perc'].append(row)
-
+        ratio_data['years'].append(years)
+        print(years)
         # passing a dictionary to the template
         return render(request, 'excel.html', ratio_data)
 

@@ -1,5 +1,6 @@
 {% load staticfiles %}
 
+
 <html lang="en">
   <head>
     <title>Inves &mdash; Colorlib Website Template</title>
@@ -55,6 +56,7 @@
             });
             chart1.render();
             }
+
     </script>
      <style>
             table {
@@ -84,6 +86,59 @@
               color: black;
 
             }
+            #wrapper {
+              position: relative;
+              margin: auto;
+            }
+            #meter {
+              width: 100%; height: 100%;
+              transform: rotateX(180deg);
+            }
+            .circle {
+              fill: none;
+            }
+            .outline, #mask {
+              stroke: #F1F1F1;
+              stroke-width: 40;
+            }
+            .range {
+              stroke-width: 40;
+            }
+            #slider, #lbl {
+              position: absolute;
+            }
+            #slider {
+              cursor: pointer;
+              left: 0;
+              margin: auto;
+              right: 0;
+              top: 58%;
+              width: 94%;
+            }
+            #lbl {
+              background-color: #D2B4DE;
+              border-radius: 2px;
+              color: white;
+              font-family: 'courier new';
+              font-size: 10pt;
+              font-weight: bold;
+              padding: 4px 4px 2px 4px;
+              right: -48px;
+              top: 57%;
+            }
+            #meter_needle {
+              height: 30%;
+              left: 0;
+              margin: auto;
+              position: absolute;
+              right: 0;
+              top: 20%;
+              transform-origin: bottom center;
+              /*orientation fix*/
+              transform: rotate(270deg);
+            }
+
+
 
             </style>
     </head>
@@ -106,10 +161,6 @@
         </div>
 
       </header>
-
-      
-
-
       <div class="site-section bg-light" id="services-section">
             <div class="container">
 
@@ -125,12 +176,130 @@
                     <h3 align="center" class="text-primary h3 mb-2">Overall Growth</h3>
                     <br>
                     <h4 align="center">Overall Grade for the company is</h4>
-                       <br>
-                       <br>
-                    <img src="{%  static 'images1/android-chrome-192x192.png' %}" align="center" alt="Image" class="img-fluid mb-3">
+
+                      <div id="wrapper">
+                <svg id="meter">
+                    <circle id="outline_curves" class="circle outline"
+                    cx="50%" cy="50%"></circle>
+
+                    <circle id="critical" class="circle range" cx="50%" cy="50%"
+                    stroke="#F5EEF8"></circle>
+
+                    <circle id="bad1" class="circle range" cx="50%" cy="50%"
+                    stroke="F4ECF7"></circle>
+
+                    <circle id="poor" class="circle range" cx="50%" cy="50%"
+                    stroke="#EBDEF0"></circle>
+
+                    <circle id="average" class="circle range" cx="50%" cy="50%"
+                    stroke="#E8DAEF"></circle>
+
+                    <circle id="comfort" class="circle range" cx="50%" cy="50%"
+                    stroke="#D7BDE2"></circle>
+
+                    <circle id="good" class="circle range" cx="50%" cy="50%"
+                    stroke="#D2B4DE"></circle>
+
+                    <circle id="great" class="circle range" cx="50%" cy="50%"
+                    stroke="#C39BD3"></circle>
+
+                    <circle id="exemplary" class="circle range" cx="50%" cy="50%"
+                    stroke="#BB8FCE"></circle>
+
+                    <circle id="mask" class="circle" cx="50%" cy="50%" >
+                    </circle>
+
+                    <circle id="outline_ends" class="circle outline"
+                    cx="50%" cy="50%"></circle>
+
+                </svg>
+                <img id="meter_needle" src="{%  static 'images1/needle.svg' %}" alt="">
+
+                <button id="grade_check" class="btn btn-whit-outline border-w-2 btn-md" type="submit" onclick="range_change_event()">Check</button>
+                <label id="lbl" id="value" for="">0</label>
+            </div>
                 </div>
               </div>
               <br><br><br><br><br>
+
+
+   <script>
+       var r = 150;
+var circles = document.querySelectorAll('.circle');
+var total_circles = circles.length;
+for (var i = 0; i < total_circles; i++) {
+    circles[i].setAttribute('r', r);
+}
+
+/* Set meter's wrapper dimension */
+var meter_dimension = (r * 2) + 100;
+var wrapper = document.querySelector("#wrapper");
+wrapper.style.width = meter_dimension + "px";
+wrapper.style.height = meter_dimension + "px";
+
+/* Add strokes to circles  */
+var cf = 2 * Math.PI * r;
+var semi_cf = cf / 2;
+var semi_cf_1by8 = semi_cf / 8;
+var semi_cf_2by8 = 2*semi_cf / 8;
+var semi_cf_3by8 = 3*semi_cf / 8;
+var semi_cf_4by8 = 4*semi_cf / 8;
+var semi_cf_5by8 = 5*semi_cf / 8;
+var semi_cf_6by8 = 6*semi_cf / 8;
+var semi_cf_7by8 = 7*semi_cf / 8;
+document.querySelector("#outline_curves")
+    .setAttribute("stroke-dasharray", semi_cf + "," + cf);
+document.querySelector("#critical")
+    .setAttribute("stroke-dasharray", semi_cf + "," + cf);
+document.querySelector("#bad1")
+    .setAttribute("stroke-dasharray", semi_cf_7by8 + "," + cf);
+document.querySelector("#poor")
+    .setAttribute("stroke-dasharray", semi_cf_6by8 + "," + cf);
+document.querySelector("#average")
+    .setAttribute("stroke-dasharray", semi_cf_5by8 + "," + cf);
+document.querySelector("#comfort")
+    .setAttribute("stroke-dasharray", semi_cf_4by8 + "," + cf);
+document.querySelector("#good")
+    .setAttribute("stroke-dasharray", semi_cf_3by8 + "," + cf);
+document.querySelector("#great")
+    .setAttribute("stroke-dasharray", semi_cf_2by8 + "," + cf);
+document.querySelector("#exemplary")
+    .setAttribute("stroke-dasharray", semi_cf_1by8 + "," + cf);
+document.querySelector("#outline_ends")
+    .setAttribute("stroke-dasharray", 2 + "," + (semi_cf - 2));
+document.querySelector("#mask")
+    .setAttribute("stroke-dasharray", semi_cf + "," + cf);
+
+/* Bind range slider event*/
+var slider = document.querySelector("#slider");
+var lbl = document.querySelector("#lbl");
+var mask = document.querySelector("#mask");
+var meter_needle =  document.querySelector("#meter_needle");
+
+
+
+function range_change_event() {
+    {% for key,value in grade.items %}
+    var percent = {{value}};
+    {% endfor %}
+    var meter_value = semi_cf - ((percent * semi_cf) / 100);
+    mask.setAttribute("stroke-dasharray", meter_value + "," + cf);
+    meter_needle.style.transform = "rotate(" +
+        (270 + ((percent * 180) / 100)) + "deg)";
+    lbl.textContent = percent + "%";
+}
+slider.addEventListener("input", range_change_event);
+
+
+
+
+           </script>
+
+
+
+
+
+
               <div class="row">
                 <div class="col-md-6 col-lg-6 mb-4">
                   <h3 align="center" class="text-primary h3 mb-2">Year on Year Grade</h3>
