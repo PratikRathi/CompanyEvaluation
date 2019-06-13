@@ -47,7 +47,9 @@ def ml_index(request):
     company_performance = list(y_pred)
     company_performance.reverse()
     company_performance
+    print(years)
     years.reverse()
+    print(years)
     company_data = {}
     for i in range(0,len(years)):
         company_data[years[i]]=int(company_performance[i])
