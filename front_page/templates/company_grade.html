@@ -3,7 +3,7 @@
 
 <html lang="en">
   <head>
-    <title>Inves &mdash; Colorlib Website Template</title>
+    <title>Company Pundit &mdash;</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -214,8 +214,11 @@
 
                 </svg>
                 <img id="meter_needle" src="{%  static 'images1/needle.svg' %}" alt="">
-
-                <button id="grade_check" class="btn btn-whit-outline border-w-2 btn-md" type="submit" onclick="range_change_event()">Check</button>
+<!-- <script>window.onload();</script> -->
+                <script>setTimeout(function () {
+                    document.getElementById("grade_check").click();
+                },2000);</script>
+                <button id="grade_check" class="btn btn-whit-outline border-w-2 btn-md" type="submit" onclick="range_change_event()" style="display:none;">Check</button>
                 <label id="lbl" id="value" for="">0</label>
             </div>
                 </div>

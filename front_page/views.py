@@ -74,7 +74,8 @@ def ml_index(request):
     perc = ((7-value)/7) +  1
     final_grade = np.mean(company_performance)*perc
     # company_data['final_grade']=final_grade
-    grade = {"final_grade": final_grade}
+    percentage = int(((7-final_grade)*100)/7)
+    grade = {"final_grade": percentage}
     # company_data
     # print("Grade : ",grade)
     return render(request, "company_grade.html",{"company_data" : company_data, "grade" : grade} )
@@ -105,12 +106,12 @@ def excel_index(request):
         max_column = df.max_column
         for i in range(1, max_column + 1):
             shareholders.append(df.cell(row=7, column=i))
-            Total_Assets.append(df.cell(row=37, column=i))
+            Total_Assets.append(df.cell(row=36, column=i))
             years.append(df.cell(row=1, column=i).value)
             Total_Liabilities.append(df.cell(16, i))
             cash.append(df.cell(33, i))
             investments.append(df.cell(30, i))
-            current_assets.append(df.cell(36, i))
+            current_assets.append(df.cell(35, i))
             receivables.append(df.cell(32, i))
 
         shareholders = list(shareholders)
