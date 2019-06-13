@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 import openpyxl
 from django.shortcuts import render, render_to_response
+from django.views.decorators.csrf import ensure_csrf_cookie
+@ensure_csrf_cookie
 
 def index(request):
     return render(request, "index.html", {})
@@ -103,12 +105,12 @@ def excel_index(request):
         max_column = df.max_column
         for i in range(1, max_column + 1):
             shareholders.append(df.cell(row=7, column=i))
-            Total_Assets.append(df.cell(row=36, column=i))
+            Total_Assets.append(df.cell(row=37, column=i))
             years.append(df.cell(row=1, column=i).value)
-            Total_Liabilities.append(df.cell(15, i))
+            Total_Liabilities.append(df.cell(16, i))
             cash.append(df.cell(33, i))
             investments.append(df.cell(30, i))
-            current_assets.append(df.cell(35, i))
+            current_assets.append(df.cell(36, i))
             receivables.append(df.cell(32, i))
 
         shareholders = list(shareholders)
