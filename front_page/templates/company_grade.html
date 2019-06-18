@@ -218,12 +218,42 @@
                 <script>setTimeout(function () {
                     document.getElementById("grade_check").click();
                 },2000);</script>
+
+                 {% for key,value in grade.items %}
+                 {% if value  >= 0 and value < 1 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>A</strong> and <strong>A+</strong></p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 1 and value < 2 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>B+</strong> and <strong>A</strong> </p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 2 and value < 3 %}
+              <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>B</strong> and <strong>B+</strong></p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 3 and value < 4 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>C+</strong> and <strong>B</strong></p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 4 and value < 5 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>C</strong> and <strong>C+</strong></p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 5 and value < 6 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>D+</strong> and <strong>C</strong></p>
+                     <br>
+                 {% endif %}
+                 {% if value  >= 6 and value < 7 %}
+                 <p style="margin: -120px 10px;font-size: 120%"> Grade for the company lies between <strong>D</strong> and <strong>D+</strong></p>
+                     <br>
+                 {% endif %}
+             {% endfor %}
                 <button id="grade_check" class="btn btn-whit-outline border-w-2 btn-md" type="submit" onclick="range_change_event()" style="display:none;">Check</button>
-                <label id="lbl" id="value" for="">0</label>
+                <label id="lbl" for="" style="left:175px;padding:5px;width:50px;">0</label>
             </div>
                 </div>
               </div>
-              <br><br><br><br><br>
 
 
    <script>

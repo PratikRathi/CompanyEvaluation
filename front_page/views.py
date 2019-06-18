@@ -78,6 +78,7 @@ def ml_index(request):
     # company_data['final_grade']=final_grade
     percentage = int(((7-final_grade)*100)/7)
     grade = {"final_grade": percentage}
+    grade["final_grade1"] = final_grade
     # company_data
     # print("Grade : ",grade)
     return render(request, "company_grade.html",{"company_data" : company_data, "grade" : grade} )
