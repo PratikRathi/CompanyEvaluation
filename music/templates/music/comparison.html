@@ -1,1 +1,320 @@
-hellooooooooooooo
+{% load staticfiles %}
+
+
+<html lang="en">
+  <head>
+    <title>Company Pundit &mdash;</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts1/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css1/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/bootstrap-datepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts1/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+            // window.onload = function () {
+            // var chart1 = new CanvasJS.Chart("chartContainer1", {
+            //     animationEnabled: true,
+            //     theme: "light2", // "light1", "light2", "dark1", "dark2"
+            //     backgroundColor: "#f8f9f8",
+            //     // subtitles: [{
+            //     //     text: "In USD",
+            //     //     fontSize: 16
+            //     // }],
+            //     axisY: {
+            //         prefix: "",
+                    
+            //     },
+            //     data: [{
+            //         type: "column",
+            //         yValueFormatString: "#,##0.00",
+            //         dataPoints: [
+            //         {% for key,value in asstr.items %}
+            //             {label: '{{key}}' , y: {{value}} },
+            //         {%endfor%}
+                        
+            //         ]
+            //     }]
+            // });
+            // chart1.render();
+            // }
+
+
+
+
+
+
+            window.onload = function () {
+
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Asset Turnover Ratio"
+                },
+                axisY: {
+                    title: "Asset Turnover Ratio",
+                    suffix: "",
+                    includeZero: false
+                },
+                axisX: {
+                    title: "Countries"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in asstr.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
+                    ]
+                }, 
+                {
+                    type: "line",
+                    name: "Expected Sales",
+                    showInLegend: true,
+                    yValueFormatString: "$#,##0",
+                    dataPoints: [
+                    {% for key,value in asstr.items %}
+                    { x: {{ forloop.counter0 }}, y: {{asstr.Sector}} },
+                    {%endfor%}
+                        
+                    ]
+                }]
+            });
+            chart1.render();
+
+
+
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Inventory Turnover Ratio"
+                },
+                axisY: {
+                    title: "Inventory Turnover Ratio",
+                    suffix: "",
+                    includeZero: false
+                },
+                axisX: {
+                    title: "ITR"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in itr.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
+                    ]
+                }, 
+                {
+                    type: "line",
+                    name: "Expected Sales",
+                    showInLegend: true,
+                    yValueFormatString: "$#,##0",
+                    dataPoints: [
+                    {% for key,value in itr.items %}
+                    { x: {{ forloop.counter0 }}, y: {{itr.Sector}} },
+                    {%endfor%}
+                        
+                    ]
+                }]
+            });
+            chart2.render();
+
+
+
+            var chart3 = new CanvasJS.Chart("chartContainer3", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Current Ratio"
+                },
+                axisY: {
+                    title: "Current Ratio",
+                    suffix: "",
+                    includeZero: false
+                },
+                axisX: {
+                    title: "Companies"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in curr_ratio.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
+                    ]
+                }]
+            });
+            chart3.render();
+
+
+
+
+            var chart4 = new CanvasJS.Chart("chartContainer4", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "Quick Ratio"
+                },
+                axisY: {
+                    title: "Quick Ratio",
+                    suffix: "",
+                    includeZero: false
+                },
+                axisX: {
+                    title: "Companies"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in q_ratio.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
+                    ]
+                }]
+            });
+            chart4.render();
+
+
+
+
+            var chart5 = new CanvasJS.Chart("chartContainer5", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                    text: "PE Ratio"
+                },
+                axisY: {
+                    title: "PE Ratio",
+                    suffix: "",
+                    includeZero: false
+                },
+                axisX: {
+                    title: "Companies"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in pe.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+                        
+                    ]
+                }]
+            });
+            chart5.render();
+            }
+    </script>
+     
+    </head>
+  </head>
+
+<body>
+<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+              <div class="site-logo">
+                  <h2><span class="text-primary">Company Division</span></h2>
+              </div>
+
+             
+
+          </div>
+        </div>
+
+      </header>
+      <div class="site-section bg-light" id="services-section">
+            <div class="container">
+
+              <div class="row">
+                <div class="col-md-6 col-lg-6 mb-4">
+                  <h3 align="center" class="text-primary h3 mb-2">Asset Turnover Ratio</h3>
+                    <br>
+                  <div id="chartContainer1" style="height: 300px; width: auto;"></div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 mb-4">
+                  <h3 align="center" class="text-primary h3 mb-2">Inventory Turnover Ratio</h3>
+                    <br>
+                  <div id="chartContainer2" style="height: 300px; width: auto;"></div>
+                </div>
+
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-6 col-lg-6 mb-4">
+                  <h3 align="center" class="text-primary h3 mb-2">Visuals</h3>
+                    <br>
+                  <div id="chartContainer3" style="height: 300px; width: auto;"></div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 mb-4">
+                  <h3 align="center" class="text-primary h3 mb-2">Visuals</h3>
+                    <br>
+                  <div id="chartContainer4" style="height: 300px; width: auto;"></div>
+                </div>
+
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-8 col-lg-8 mb-6">
+                  <h3 align="center" class="text-primary h3 mb-2">Visuals</h3>
+                    <br>
+                  <div id="chartContainer5" style="height: 300px; width: auto;"></div>
+                </div>
+
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-8 col-lg-8 mb-6">
+                  <h3 align="center" class="text-primary h3 mb-2">PE Ratio</h3>
+                    <br>
+                  <div id="chartContainer6" style="height: 300px; width: auto;"></div>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+
+
+</body>
