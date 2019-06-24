@@ -50,11 +50,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-<<<<<<< HEAD
-    #'django.middleware.csrf.CsrfViewMiddleware',
-=======
-    # 'django.middleware.csrf.CsrfViewMiddleware',
->>>>>>> 75e28becdfc54968b292277aea0e1e8e9d7451c9
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
