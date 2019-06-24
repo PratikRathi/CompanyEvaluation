@@ -39,7 +39,7 @@ def ml_index(request):
     print("------------")
     print(df.head()) 
     X_test = df
-    loaded_model = pickle.load(open('/home/rahil/Desktop/FInal Project/finalized_model_7class.sav', 'rb'))
+    loaded_model = pickle.load(open('C:/Users/Madhur/Downloads/finalized_model_7class.sav', 'rb'), encoding='latin1')
     y_pred=loaded_model.predict(X_test)
 
     df[0]

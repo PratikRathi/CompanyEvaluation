@@ -11,3 +11,6 @@ def index(request):
 def details(request, sector_id):
     sector = get_object_or_404(Sectors,pk = sector_id)
     return render(request, 'music/detail.html', {'sector' : sector} )
+
+def fmcg(request):
+    return render(request,'music/comparison.html' ,{} )
