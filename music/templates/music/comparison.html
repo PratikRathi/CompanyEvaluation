@@ -87,19 +87,20 @@
                     {%endfor%}
                         
                     ]
-                }, 
-                {
+                },
+                    {
                     type: "line",
                     name: "Expected Sales",
                     showInLegend: true,
                     yValueFormatString: "$#,##0",
                     dataPoints: [
                     {% for key,value in asstr.items %}
-                    { x: {{ forloop.counter0 }}, y: {{asstr.Sector}} },
+                    { x : {{forloop.counter0}}, y: {{asstr.Sector}} },
                     {%endfor%}
                         
                     ]
-                }]
+                }
+                ]
             });
             chart1.render();
 
@@ -109,21 +110,21 @@
                 animationEnabled: true,
                 theme: "light2", // "light1", "light2", "dark1", "dark2"
                 title: {
-                    text: "Inventory Turnover Ratio"
+                    text: "PBDIT/Share (Rs.)"
                 },
                 axisY: {
-                    title: "Inventory Turnover Ratio",
+                    title: "(Rs.)",
                     suffix: "",
                     includeZero: false
                 },
                 axisX: {
-                    title: "ITR"
+                    title: "Companies"
                 },
                 data: [{
                     type: "column",
                     yValueFormatString: "#,##0.00",
                     dataPoints: [
-                    {% for key,value in itr.items %}
+                    {% for key,value in pbdit.items %}
                         {label: '{{key}}' , y: {{value}} },
                     {%endfor%}
                         
@@ -135,8 +136,8 @@
                     showInLegend: true,
                     yValueFormatString: "$#,##0",
                     dataPoints: [
-                    {% for key,value in itr.items %}
-                    { x: {{ forloop.counter0 }}, y: {{itr.Sector}} },
+                    {% for key,value in pbdit.items %}
+                    { x : {{forloop.counter0}}, y: {{pbdit.Sector}} },
                     {%endfor%}
                         
                     ]
@@ -180,10 +181,10 @@
                 animationEnabled: true,
                 theme: "light2", // "light1", "light2", "dark1", "dark2"
                 title: {
-                    text: "Quick Ratio"
+                    text: "Dividend / Share(Rs.)"
                 },
                 axisY: {
-                    title: "Quick Ratio",
+                    title: "(Rs.)",
                     suffix: "",
                     includeZero: false
                 },
@@ -194,7 +195,7 @@
                     type: "column",
                     yValueFormatString: "#,##0.00",
                     dataPoints: [
-                    {% for key,value in q_ratio.items %}
+                    {% for key,value in div_share.items %}
                         {label: '{{key}}' , y: {{value}} },
                     {%endfor%}
                         
@@ -250,14 +251,27 @@
               </div>
 
              
-
           </div>
         </div>
 
       </header>
+
+
       <div class="site-section bg-light" id="services-section">
             <div class="container">
-
+                <div class="row">
+                    <h3>
+                        Differences of ratios between your company and the Sector : <br>
+                       {% for key,value in diff_sector_ratio.items %}
+                       {{key}} --> {{value}}<br>
+                       {%endfor%}
+                    </h3>
+                </div>
+                <div class="row">
+                    <h3>Attractiveness Index of the company is {{attract_dict.attractiveness_index}}</h3><br>
+                    <h3>Attractiveness of the company is {{attract_dict.attractiveness}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3><br><br>
+                    <h3>Predicted PE of the company is {{attract_dict.predicted}}&nbsp;&nbsp;&nbsp;</h3><br>
+                </div>
               <div class="row">
                 <div class="col-md-6 col-lg-6 mb-4">
                   <h3 align="center" class="text-primary h3 mb-2">Asset Turnover Ratio</h3>

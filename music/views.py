@@ -20,8 +20,8 @@ def fmcg(request):
     pe = {}
     ev={}
     curr_ratio={}
-    q_ratio = {}
-    itr = {}
+    div_share = {}
+    pbdit = {}
     p_bv = {}
     asstr = {}
     y = list(df['PE Ratio'])
@@ -36,13 +36,13 @@ def fmcg(request):
     for i in range(0,len(names)):
         curr_ratio[names[i]]=y[i]
 
-    y = list(df['Quick Ratio (X)'])
+    y = list(df['Dividend / Share(Rs.)'])
     for i in range(0,len(names)):
-        q_ratio[names[i]]=y[i]
+        div_share[names[i]]=y[i]
 
-    y = list(df['Inventory Turnover Ratio (X)'])
+    y = list(df['PBDIT/Share (Rs.)'])
     for i in range(0,len(names)):
-        itr[names[i]]=y[i]
+        pbdit[names[i]]=y[i]
 
     y = list(df['Price/BV (X)'])
     for i in range(0,len(names)):
@@ -57,11 +57,35 @@ def fmcg(request):
     pe['Your Company'] = float(df1['PE Ratio'])
     ev['Your Company'] = float(df1['EV/EBITDA (X)'])
     curr_ratio['Your Company'] = float(df1['Current Ratio (X)'])
-    q_ratio['Your Company'] = float(df1['Quick Ratio (X)'])
-    itr['Your Company'] = float(df1['Inventory Turnover Ratio (X)'])
+    div_share['Your Company'] = float(df1['Dividend / Share(Rs.)'])
+    pbdit['Your Company'] = float(df1['PBDIT/Share (Rs.)'])
     p_bv['Your Company'] = float(df1['Price/BV (X)'])
     asstr['Your Company'] = float(df1['Asset Turnover Ratio (%)'])
-    return render(request,'music/comparison.html' ,{'asstr' : asstr, 'p_bv' : p_bv, 'itr' : itr, 'q_ratio' : q_ratio, 'curr_ratio': curr_ratio, 'ev' : ev, 'pe' : pe} )
+
+
+    diff_sector_ratio = {}
+    diff_sector_ratio['PE Ratio'] = float(df1['PE Ratio'])-df['PE Ratio']['Sector']
+    diff_sector_ratio['EV/EBITDA (X)'] = float(df1['EV/EBITDA (X)'])-df['EV/EBITDA (X)']['Sector']
+    diff_sector_ratio['Current Ratio (X)'] = float(df1['Current Ratio (X)'])-df['Current Ratio (X)']['Sector']
+    diff_sector_ratio['Dividend / Share(Rs.)'] = float(df1['Dividend / Share(Rs.)'])-df['Dividend / Share(Rs.)']['Sector']
+    diff_sector_ratio['PBDIT/Share (Rs.)'] = float(df1['PBDIT/Share (Rs.)'])-df['PBDIT/Share (Rs.)']['Sector']
+    diff_sector_ratio['Price/BV (X)'] = float(df1['Price/BV (X)'])-df['Price/BV (X)']['Sector']
+    diff_sector_ratio['Asset Turnover Ratio (%)'] = float(df1['Asset Turnover Ratio (%)'])-df['Asset Turnover Ratio (%)']['Sector']
+    intercept=-21.64410443
+    div_var=-0.1918819996
+    PBDIT_var=0.1364471059
+    astr_var=0.2951034307
+    ev_var=0.729999005
+    total = intercept + div_var*float(df1['Dividend / Share(Rs.)']) + PBDIT_var*float(df1['PBDIT/Share (Rs.)']) + astr_var*float(df1['Asset Turnover Ratio (%)']) + ev_var * float(df1['EV/EBITDA (X)'])
+    attractiveness = total - float(df1['PE Ratio'])
+    attractiveness_index = attractiveness/float(df1['PE Ratio'])
+    attract_dict = {
+        'predicted' : total,
+        'actual': float(df1['PE Ratio']),
+        'attractiveness' : attractiveness,
+        'attractiveness_index' : attractiveness_index
+    }
+    return render(request,'music/comparison.html' ,{'asstr' : asstr, 'p_bv' : p_bv, 'pbdit' : pbdit, 'div_share' : div_share, 'curr_ratio': curr_ratio, 'ev' : ev, 'pe' : pe, 'attract_dict' : attract_dict, 'diff_sector_ratio' : diff_sector_ratio} )
 
 
 def details(request, sector_id):
