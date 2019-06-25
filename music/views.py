@@ -12,10 +12,10 @@ def fmcg(request):
 # coding: utf-8
 
     import pandas as pd
-    df=pd.read_csv('/home/rahil/Desktop/FInal Project/Compare - Sheet1.csv')
+    df=pd.read_csv('music/Compare - Sheet1.csv')
     df = df.set_index('Unnamed: 0') 
     df.loc['Sector'] = df.mean()
-    df1 = pd.read_csv('/home/rahil/Desktop/FInal Project/Comparison_input - Sheet1.csv')
+    df1 = pd.read_csv('music/Comparison_input - Sheet1.csv')
     names = list(df.index)
     pe = {}
     ev={}
