@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 
 def index(request):
     all_sectors = Sectors.objects.all()
-    return render(request,'music/index1.html' ,{'all_sectors' : all_sectors} )
+    return render(request,'music/music_main.html' ,{'all_sectors' : all_sectors} )
 
 def fmcg(request):
     #!/usr/bin/env python
@@ -64,13 +64,13 @@ def fmcg(request):
 
 
     diff_sector_ratio = {}
-    diff_sector_ratio['PE Ratio'] = float(df1['PE Ratio'])-df['PE Ratio']['Sector']
-    diff_sector_ratio['EV/EBITDA (X)'] = float(df1['EV/EBITDA (X)'])-df['EV/EBITDA (X)']['Sector']
+    diff_sector_ratio['PERatio'] = ((float(df1['PE Ratio'])-df['PE Ratio']['Sector'])/df['PE Ratio']['Sector'])*100
+    diff_sector_ratio['EVEBITDA'] = ((float(df1['EV/EBITDA (X)'])-df['EV/EBITDA (X)']['Sector'])/df['EV/EBITDA (X)']['Sector'])*100
     diff_sector_ratio['Current Ratio (X)'] = float(df1['Current Ratio (X)'])-df['Current Ratio (X)']['Sector']
-    diff_sector_ratio['Dividend / Share(Rs.)'] = float(df1['Dividend / Share(Rs.)'])-df['Dividend / Share(Rs.)']['Sector']
+    diff_sector_ratio['DividendShare'] = ((float(df1['Dividend / Share(Rs.)'])-df['Dividend / Share(Rs.)']['Sector'])/df['Dividend / Share(Rs.)']['Sector'])*100
     diff_sector_ratio['PBDIT/Share (Rs.)'] = float(df1['PBDIT/Share (Rs.)'])-df['PBDIT/Share (Rs.)']['Sector']
     diff_sector_ratio['Price/BV (X)'] = float(df1['Price/BV (X)'])-df['Price/BV (X)']['Sector']
-    diff_sector_ratio['Asset Turnover Ratio (%)'] = float(df1['Asset Turnover Ratio (%)'])-df['Asset Turnover Ratio (%)']['Sector']
+    diff_sector_ratio['AssetTurnoverRatio'] = ((float(df1['Asset Turnover Ratio (%)'])-df['Asset Turnover Ratio (%)']['Sector'])/df['Asset Turnover Ratio (%)']['Sector'])*100
     intercept=-21.64410443
     div_var=-0.1918819996
     PBDIT_var=0.1364471059
@@ -85,7 +85,7 @@ def fmcg(request):
         'attractiveness' : attractiveness,
         'attractiveness_index' : attractiveness_index
     }
-    return render(request,'music/comparison.html' ,{'asstr' : asstr, 'p_bv' : p_bv, 'pbdit' : pbdit, 'div_share' : div_share, 'curr_ratio': curr_ratio, 'ev' : ev, 'pe' : pe, 'attract_dict' : attract_dict, 'diff_sector_ratio' : diff_sector_ratio} )
+    return render(request,'music/excel1.html' ,{'asstr' : asstr, 'p_bv' : p_bv, 'pbdit' : pbdit, 'div_share' : div_share, 'curr_ratio': curr_ratio, 'ev' : ev, 'pe' : pe, 'attract_dict' : attract_dict, 'diff_sector_ratio' : diff_sector_ratio} )
 
 
 def details(request, sector_id):

@@ -1,0 +1,739 @@
+{% load staticfiles %}
+<html xmlns:front_page="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'fonts1/icomoon/style.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/jquery-ui.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css1/owl.theme.default.min.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/bootstrap-datepicker.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'fonts1/flaticon/font/flaticon.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/aos.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css1/style.css' %}">
+        
+        <title>
+            Comparisons
+        </title>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <script>
+            console.log(current_ratio);
+            </script>
+           
+        <style>
+            a:hover {
+            color: rgb(170, 164, 165);
+            cursor: pointer;
+            }
+              table {
+              width:80%;
+
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 15px;
+              text-align: left;
+            }
+            tr:nth-child(even) {
+              background-color: #eee;
+            }
+            tr:nth-child(odd) {
+             background-color: #fff;
+            }
+            th {
+
+              background-color: grey;
+              color: black;
+
+              background-color: white;
+              color: black;
+
+            }
+            .p{
+                font-size: 3px;
+            }
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                }
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 12px 16px;
+                z-index: 1;
+                }
+            .dropdown:hover .dropdown-content {
+                display: block;
+                }
+            .chart{
+                right: 0;
+                left: 0;
+            }
+            </style>
+    </head>
+
+
+
+
+
+
+
+    <!-- Body Start -->
+    <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+    <div class="site-wrap"  id="home-section">
+          
+              <div class="site-mobile-menu site-navbar-target">
+                <div class="site-mobile-menu-header">
+                  <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                  </div>
+                </div>
+                <div class="site-mobile-menu-body"></div>
+              </div>
+             
+                
+              <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+          
+                <div class="container">
+                  <div class="row align-items-center position-relative">
+                    
+                      
+                      <div class="site-logo">
+                          <span class="text-primary">Company Pundit</span>
+                      </div>
+                      
+                        <nav class="site-navigation text-center ml-auto" role="navigation">
+          
+                          <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                              <li><a href="#table" class="nav-link">Attractiveness</a></li>
+                              <li><a href="#asset_r" class="nav-link">Asset Turnover</a></li>
+                              <li><a href="#invent_r" class="nav-link">Inventory Turnover</a></li>
+                              <li><a href="#current_r" class="nav-link">Current</a></li>
+                            <li><a href="#ds_r" class="nav-link">Dividend Share</a></li>
+                              <li><a href="#pe_r" class="nav-link">PE</a></li>
+                            
+                          </ul>
+                        </nav>
+                    
+                      
+          
+                    <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+          
+                  </div>
+
+                      
+                      
+                </div>
+                
+              </header>
+        <br><br>
+
+                <br>
+
+              <div id="overall" class="w3-container city" >
+                  <div id="table">
+                    <h2 align="center" class="text-primary h2 mb-2">RATIOS</h2>
+                    <br>
+                    <br>
+                    <!-- {{years}} -->
+                    <div align="center">
+                         <table align="center">
+                                <tr>
+                                    <th>Parameters</th>
+                                    <th>Value</th>
+                                </tr>
+                                <tr>
+                                    <td> Attractiveness Index </td>
+                                    <td>{{attract_dict.attractiveness_index}}</td>
+                                </tr>
+                                <tr>
+                                    <td> Attractiveness </td>
+                                    <td>{{attract_dict.attractiveness}} </td>
+                                </tr>
+                                <tr>
+                                    <td> Predicted PE </td>
+                                    <td>{{attract_dict.predicted}}</td>
+                                </tr>
+                            </table>
+                    </div>
+
+              </div>
+              <br>
+              <br>
+                  <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+                  <br>
+              <br>
+                <br>
+
+               <div class="site-section bg-light" id="services-section">
+            <div class="container">
+                <div id="asset_r">
+              <h3 class="text-primary h3 mb-2">ASSET TURNOVER RATIO</h3>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="row">
+                        <div align="center" class="col-lg-6 col-sm-12">
+                            <h3 align="center" class="text-primary h3 mb-2">Comparisons</h3>
+                            <br>
+                            <br>
+                        <div  id="chartContainer1" ></div>
+                        </div>
+                        <div align="center" class="col-lg-1 col-sm-12">
+                        </div>
+                  <div  class="col-lg-5 col-sm-12">
+                     <h3 align="center" class="text-primary h3 mb-2">Ratio Significance</h3>
+                    <br>
+                    <br>
+
+                         <p style="font-size: 115%">The asset turnover ratio is an efficiency ratio that measures
+                             a <strong>company's ability to generate sales from its assets</strong> by comparing net sales with average total assets.
+                           <br>
+
+                         {% if diff_sector_ratio.AssetTurnoverRatio > 8 %}
+                           <br>
+                           The company ratio is {{diff_sector_ratio.AssetTurnoverRatio}} percent above the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           The higher the Ratio, the more likely it is that a business uses its assets efficiently to generate sales.
+
+                          {% endif %}
+                          {% if diff_sector_ratio.AssetTurnoverRatio < -10 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.AssetTurnoverRatio}} percent below the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           The lower the Ratio, the more likely it is that a business is not using its assets efficiently to generate sales.
+
+                          {% endif %}
+                            {% if diff_sector_ratio.AssetTurnoverRatio >= -10 and diff_sector_ratio.AssetTurnoverRatio <= 8 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.AssetTurnoverRatio}}
+                                {% if diff_sector_ratio.AssetTurnoverRatio > 0 %} percent above the generalized sector ratios.
+                                {% endif %}
+                                {% if diff_sector_ratio.AssetTurnoverRatio < 0 %} percent below the generalized sector ratios.
+                                {% endif %}
+
+
+                           <br>
+                           <br>
+                            It is in the optimal ratio range of the sector.
+                             <br>
+                           <br>
+                           Your Company is using its assets efficiently to generate sales.
+
+                          {% endif %}
+                          </p>
+                  </div>
+                  </div>
+                    </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                <br>
+                        <br>
+                        <br>
+                <br>
+              <br>
+                <br>
+              <br>
+                 <div id="invent_r">
+              <h2 class="text-primary h3 mb-2">INVENTORY TURNOVER RATIO</h2>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+
+
+                  <div class="row">
+                        <div align="center" class="col-lg-6 col-sm-12">
+                            <h3 align="center" class="text-primary h3 mb-2">Comparisons</h3>
+                            <br>
+                            <br>
+                        <div  id="chartContainer2" ></div>
+                         </div>
+                        <div align="center" class="col-lg-1 col-sm-12">
+                        </div>
+                  <div  class="col-lg-5 col-sm-12">
+                     <h3 align="center" class="text-primary h3 mb-2">Ratio Significance</h3>
+                    <br>
+                    <br>
+                       <p style="font-size: 115%">Inventory Turnover Ratio
+                           is the ratio of <strong>Cost of Goods Sold / Average Inventory</strong> during the same time period.
+                           <br>
+
+                         {% if diff_sector_ratio.EVEBITDA > 8 %}
+                           <br>
+                           The company ratio is {{diff_sector_ratio.EVEBITDA}} percent above the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           The higher the Ratio, the more likely it is that a business is carrying too much inventory.
+                           <br>
+                           <br>
+                           Overstocking means that cash is being tied up in inventory assets for a prolonged period.
+                          {% endif %}
+                          {% if diff_sector_ratio.EVEBITDA < -10 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.EVEBITDA}} percent below the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           The lower the Ratio, the more likely it is that a business is selling its inventory at a rapid rate or it is not having much inventory.
+                           <br>
+                           <br>
+                           Either your company is growing fast or the company is not having much cash to have adequate stock.
+                          {% endif %}
+                              {% if diff_sector_ratio.EVEBITDA >= -10 and diff_sector_ratio.EVEBITDA <= 8 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.EVEBITDA}}
+                                {% if diff_sector_ratio.EVEBITDA > 0 %} percent above the generalized sector ratios.
+                                {% endif %}
+                                {% if diff_sector_ratio.EVEBITDA < 0 %} percent below the generalized sector ratios.
+                                {% endif %}
+
+
+                           <br>
+                           <br>
+                            It is in the optimal ratio range of the sector.
+                             <br>
+                           <br>
+                           Your Company is selling its inventory efficiently.
+
+                          {% endif %}
+                          </p>
+                  </div>
+                  </div>
+                  </div>
+                  <br>
+                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>
+                <br>
+              <br>
+                <br>
+                 <div id="current_r">
+              <h2 class="text-primary h3 mb-2">CURRENT RATIO</h2>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                     <br>
+                  <div class="row">
+                        <div align="center" class="col-lg-6 col-sm-12">
+                        <div  id="chartContainer3" ></div>
+                        </div>
+                  <div align="center" class="col-lg-6 col-sm-12">
+                     <h3 align="center" class="text-primary h4 mb-2">Ratio Significance</h3>
+                    <br>
+                    <br>
+                        <table align="center">
+                                <tr>
+                                    <th>Range</th>
+                                    <th>Growth Significance</th>
+                                </tr>
+                                <tr>
+                                    <td>Current Ratio > 2 </td>
+                                    <td>Good Position</td>
+                                </tr>
+                                <tr>
+                                    <td> 1 < Current ratio < 2 </td>
+                                    <td>Average Position</td>
+                                </tr>
+                                <tr>
+                                    <td>Current Ratio < 1 </td>
+                                    <td>Critical Position</td>
+                                </tr>
+                            </table>
+                  </div>
+                  </div>
+                     </div>
+                     <br>
+                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>
+                <br>
+              <br>
+                <br>
+
+            <div id="ds_r">
+              <h2 class="text-primary h3 mb-2">DIVIDEND SHARE RATIO</h2>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="row">
+                        <div align="center" class="col-lg-6 col-sm-12">
+                          <h3 align="center" class="text-primary h3 mb-2">Comparisons</h3>
+                            <br>
+                            <br>
+                        <div  id="chartContainer4" ></div>
+
+                        </div>
+                      <div align="center" class="col-lg-1 col-sm-12">
+                        </div>
+                  <div class="col-lg-5 col-sm-12">
+                     <h3 align="center" class="text-primary h3 mb-2">Ratio Significance</h3>
+                    <br>
+                    <br>
+                         <p style="font-size: 115%">Dividend per share is the <strong>sum of declared dividends issued by a
+                             company</strong> for every ordinary share outstanding.
+                           <br>
+
+                         {% if diff_sector_ratio.DividendShare > 8 %}
+                           <br>
+                           The company ratio is {{diff_sector_ratio.DividendShare}} percent above the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           High dividend yields are attractive but they may come at the cost of growth potential.
+                           <br>
+                           <br>
+                           Every dollar a company is paying in dividends to its shareholders is a dollar
+                             that company is not reinvesting to grow and generate capital gains.
+                          {% endif %}
+                          {% if diff_sector_ratio.DividendShare < -10 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.DividendShare}} percent below the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           When a company's stock has a low P/E ratio, it may indicate that the stock is undervalued.
+                          <br>
+                          <br>
+                          Investors can often buy undervalued stock at a discount and then profit when the price of that stock climbs.
+                          <br>
+                          <br>
+                          Which will be beneficial for both company and investors.
+
+                          {% endif %}
+                            {% if diff_sector_ratio.DividendShare >= -10 and diff_sector_ratio.DividendShare <= 8 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.DividendShare}}
+                                {% if diff_sector_ratio.DividendShare > 0 %} percent above the generalized sector ratios.
+                                {% endif %}
+                                {% if diff_sector_ratio.DividendShare < 0 %} percent below the generalized sector ratios.
+                                {% endif %}
+
+
+                           <br>
+                           <br>
+                            It is in the optimal ratio range of the sector.
+                             <br>
+                           <br>
+                           Your Company is efficient in terms of dividends and also reinvesting.
+
+                          {% endif %}
+                          </p>
+                  </div>
+                  </div>
+                </div>
+                    <br>
+                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>
+                <br>
+              <br>
+                <div id="pe_r">
+              <h2 class="text-primary h3 mb-2">PE RATIO</h2>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="row">
+                        <div align="center" class="col-lg-6 col-sm-12">
+                               <h3 align="center" class="text-primary h3 mb-2">Comparisons</h3>
+                            <br>
+                            <br>
+                        <div  id="chartContainer5" ></div>
+                        </div>
+                      <div align="center" class="col-lg-1 col-sm-12">
+                        </div>
+                  <div  class="col-lg-5 col-sm-12">
+                     <h3 align="center" class="text-primary h3 mb-2">Ratio Significance</h3>
+                    <br>
+                    <br>
+                      <p style="font-size: 115%">It is a ratio of a company's <strong>current market share price compared to its annual earnings</strong> per share.
+                           <br>
+
+                         {% if diff_sector_ratio.PERatio > 8 %}
+                           <br>
+                           The company ratio is {{diff_sector_ratio.PERatio}} percent above the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           Generally speaking, a high P/E ratio indicates that investors expect higher earnings.
+                           <br>
+                           <br>
+                           However, a stock with a high P/E ratio is not necessarily a better investment than one with a lower P/E ratio,
+                          as a high P/E ratio can indicate that the stock is being overvalued.
+                          {% endif %}
+                          {% if diff_sector_ratio.PERatio < -10 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.PERatio}} percent below the optimal ratio of the sector.
+                           <br>
+                           <br>
+                           When a company's stock has a low P/E ratio, it may indicate that the stock is undervalued.
+                          <br>
+                          <br>
+                          Investors can often buy undervalued stock at a discount and then profit when the price of that stock climbs.
+                          <br>
+                          <br>
+                          Which will be beneficial for both company and investors.
+
+                          {% endif %}
+                            {% if diff_sector_ratio.PERatio >= -10 and diff_sector_ratio.PERatio <= 8 %}
+                           <br>
+                          The company ratio is {{diff_sector_ratio.PERatio}}
+                                {% if diff_sector_ratio.PERatio > 0 %} percent above the generalized sector ratios.
+                                {% endif %}
+                                {% if diff_sector_ratio.PERatio < 0 %} percent below the generalized sector ratios.
+                                {% endif %}
+
+
+                           <br>
+                           <br>
+                            It is in the optimal ratio range of the sector.
+                             <br>
+                           <br>
+                           Your Company is neither overvalued nor undervalued.
+
+                          {% endif %}
+                          </p>
+                  </div>
+                  </div>
+                     </div>
+                    <br>
+                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+              <br>
+  <br>
+              <br>
+                <br>
+                <br>
+                </div>
+                   </div>
+                  </div>
+
+        
+ <script>
+            window.onload = function () {
+
+            var chart1 = new CanvasJS.Chart("chartContainer1", {
+                animationEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                axisY: {
+                    suffix: "",
+                    includeZero: false
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in asstr.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+
+                    ]
+                },
+                    {
+                    type: "line",
+                    name: "Expected Sales",
+                    showInLegend: true,
+                    yValueFormatString: "$#,##0",
+                    dataPoints: [
+                    {% for key,value in asstr.items %}
+                    { x : {{forloop.counter0}}, y: {{asstr.Sector}} },
+                    {%endfor%}
+
+                    ]
+                }
+                ]
+            });
+            chart1.render();
+
+
+
+            var chart2 = new CanvasJS.Chart("chartContainer2", {
+                animationEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                axisY: {
+                    suffix: "",
+                    includeZero: false
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in pbdit.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+
+                    ]
+                },
+                {
+                    type: "line",
+                    name: "Expected Sales",
+                    showInLegend: true,
+                    yValueFormatString: "$#,##0",
+                    dataPoints: [
+                    {% for key,value in pbdit.items %}
+                    { x : {{forloop.counter0}}, y: {{pbdit.Sector}} },
+                    {%endfor%}
+
+                    ]
+                }]
+            });
+            chart2.render();
+
+
+
+            var chart3 = new CanvasJS.Chart("chartContainer3", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                axisY: {
+                    suffix: "",
+                    includeZero: false
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in curr_ratio.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+
+                    ]
+                }]
+            });
+            chart3.render();
+
+
+
+
+            var chart4 = new CanvasJS.Chart("chartContainer4", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                axisY: {
+                    suffix: "",
+                    includeZero: false
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in div_share.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+
+                    ]
+                }]
+            });
+            chart4.render();
+
+
+
+
+            var chart5 = new CanvasJS.Chart("chartContainer5", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                backgroundColor: "#f8f9f8",
+                axisY: {
+                    suffix: "",
+                    includeZero: false
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.00",
+                    dataPoints: [
+                    {% for key,value in pe.items %}
+                        {label: '{{key}}' , y: {{value}} },
+                    {%endfor%}
+
+                    ]
+                }]
+            });
+            chart5.render();
+            }
+    </script>
+
+
+</div>
+
+<script src="{% static 'js1/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js1/jquery-ui.js' %}"></script>
+  <script src="{% static 'js1/popper.min.js' %}"></script>
+  <script src="{% static 'js1/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js1/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.sticky.js' %}"></script>
+  <script src="{% static 'js1/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js1/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js1/aos.js' %}"></script>
+
+  <script src="{% static 'js1/main.js' %}"></script>
+</body>
+</html>
